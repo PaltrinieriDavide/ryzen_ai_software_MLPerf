@@ -1,0 +1,20 @@
+{
+  "mlperf_benchmark": {
+    "framework": "ONNX Runtime",
+    "backend": "Vitis AI",
+    "hardware": "AMD NPU",
+    "model": "ResNet50 v1.5",
+    "scenario": "Offline",
+    "division": "Open",
+    "category": "Image Classification",
+    "precision": "FP32",
+    "timestamp": "2025-05-16T16:13:48.412273"
+  },
+  "performance_metrics": {
+    "total_images": 5,
+    "total_time_seconds": 0.07885122299194336,
+    "images_per_second": 63.41055737982499,
+    "average_latency_ms": 12.208080291748047,
+    "latency_std_ms": 5.55598311830572
+  }
+}
