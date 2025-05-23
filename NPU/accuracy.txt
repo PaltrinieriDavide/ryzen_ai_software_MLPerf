@@ -1,3 +1,0 @@
-Top-1 Accuracy: 76.15%
-Top-5 Accuracy: 92.87%
-Total samples: 50000
