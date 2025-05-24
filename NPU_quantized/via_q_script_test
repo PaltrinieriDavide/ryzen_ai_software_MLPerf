@@ -1,0 +1,52 @@
+# --- PowerShell commands for quantization ---
+
+# --- Configuration ---
+# !!! IMPORTANT: EDIT THE LINE BELOW with the ACTUAL FULL PATH to vai_q_onnx.exe on your system !!!
+$VAI_Q_ONNX_EXE_PATH = "PASTE_THE_FULL_PATH_TO_VAI_Q_ONNX_EXE_HERE" 
+# For example, if you found it at: C:\Program Files\AMD\RyzenAI\voe-1.3.1\vai_quantizer\vai_q_onnx.exe
+# then the line above would be:
+# $VAI_Q_ONNX_EXE_PATH = "C:\Program Files\AMD\RyzenAI\voe-1.3.1\vai_quantizer\vai_q_onnx.exe"
+
+$FP32_MODEL = "resnet50_fp32.onnx"  # Should exist from Step 1
+$QUANTIZED_MODEL = "resnet50_quantized.onnx" # This is the file we want to create
+$CALIB_DATA_DIR = "preprocessed_calib_data" # Should exist from Step 2
+
+# --- Check if prerequisites exist (optional but helpful) ---
+if (-not (Test-Path $FP32_MODEL -PathType Leaf)) {
+    Write-Error "FP32 model not found: $FP32_MODEL. Please run Step 1."
+    exit 1
+}
+if (-not (Test-Path $CALIB_DATA_DIR -PathType Container)) {
+    Write-Error "Calibration data directory not found: $CALIB_DATA_DIR. Please run Step 2."
+    exit 1
+}
+if (-not (Test-Path $VAI_Q_ONNX_EXE_PATH -PathType Leaf)) {
+    Write-Error "vai_q_onnx.exe not found at the specified path: $VAI_Q_ONNX_EXE_PATH. Please verify the path."
+    exit 1
+}
+
+# --- The vai_q_onnx command ---
+Write-Host "Attempting to run quantization using: $VAI_Q_ONNX_EXE_PATH"
+Write-Host "Input FP32 model: $FP32_MODEL"
+Write-Host "Calibration data: $CALIB_DATA_DIR"
+Write-Host "Output quantized model will be: $QUANTIZED_MODEL"
+
+& $VAI_Q_ONNX_EXE_PATH `
+    --input_model $FP32_MODEL `
+    --output_model $QUANTIZED_MODEL `
+    --calibrate_data_dir $CALIB_DATA_DIR `
+    --quant_format QDQ `
+    --input_nodes "input" `
+    --output_nodes "output" `
+    --op_types_to_quantize "Conv,MatMul,Add,Mul" `
+    --per_channel True `
+    --verbose
+
+# --- Check if quantized model was created ---
+if (Test-Path $QUANTIZED_MODEL -PathType Leaf) {
+    Write-Host "SUCCESS: Quantized model '$QUANTIZED_MODEL' created successfully." -ForegroundColor Green
+} else {
+    Write-Error "FAILURE: Quantized model '$QUANTIZED_MODEL' was NOT created. Check for errors above from vai_q_onnx.exe."
+}
+
+Write-Host "Quantization command sequence finished."

@@ -1,0 +1,26 @@
+@echo off
+rem monitor_npu_simple.bat
+rem Simple NPU monitor using xrt-smi examine with BDF.
+
+set XRT_SMI_EXE="C:\Users\aiene\Downloads\RAI_1.3.1_242_WHQL\npu_mcdm_stack_prod\xrt-smi"
+rem **IMPORTANT**: If xrt-smi is NOT in your PATH, replace "xrt-smi" below
+rem with the full path, e.g., "C:\Path\To\xrt-smi.exe"
+rem For example:
+rem set XRT_SMI_EXE="C:\Program Files\Xilinx\Vitis-AI\runtime\bin\xrt-smi.exe"
+
+set NPU_BDF="0066:00:01.1" 
+rem *** This is the BDF for YOUR NPU from the previous output. ***
+rem If it changes or you have other devices, you might need to adjust this.
+
+:loop
+    cls
+    echo Timestamp: %date% %time%
+    echo Monitoring NPU (BDF: %NPU_BDF%)
+    rem --- This is the command to get detailed NPU info using BDF ---
+    %XRT_SMI_EXE% examine -d %NPU_BDF% --format json
+    rem You can also try without --format json first to see the default report:
+    rem %XRT_SMI_EXE% examine -d %NPU_BDF%
+    echo -------------------------
+    echo Press Ctrl+C to stop.
+    timeout /t 3 /nobreak > nul
+goto loop
