@@ -37,7 +37,7 @@ MIN_QUERY_COUNT = 1
 
 image_dir = Path("imagenet_val_dataset\\ILSVRC2012_img_val")
 map_file = Path("imagenet_val_dataset\\val_map.txt")
-results_dir = Path("results_offline")
+results_dir = Path("results\\offline")
 onnx_model_path = Path("quantized_models\\resnet50_quark_int8.onnx")
 
 
