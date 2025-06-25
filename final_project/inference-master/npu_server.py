@@ -23,7 +23,7 @@ BATCH_SIZE = 1
 
 image_dir = Path("imagenet_val_dataset\\ILSVRC2012_img_val")
 map_file = Path("imagenet_val_dataset\\val_map.txt")
-results_dir = Path("results_server")
+results_dir = Path("results\\server_test")
 onnx_model_path = Path("quantized_models\\resnet50_quark_int8.onnx")
 
 # Ensure results directory exists
