@@ -1,0 +1,1199 @@
+{
+ "config": {
+  "cacheDir": "vitis_ai_cache",
+  "cacheKey": "modelcachekey",
+  "version": {
+   "versionInfos": [
+    {
+     "packageName": "vaip",
+     "commit": "b82e7408a038962ab57c5d717ce45a021d70dbcf",
+     "version": "vaip.1.0.0"
+    },
+    {
+     "packageName": "target_factory",
+     "commit": "42309ec6a2b5aad888803bdc835af4ee0ecd7fa6",
+     "version": "target-factory.3.5.0"
+    },
+    {
+     "packageName": "vart",
+     "commit": "dff5a7e3a853bafa55f48a2de2f54cd76e37ed81",
+     "version": "vart"
+    },
+    {
+     "packageName": "xcompiler",
+     "commit": "f6916e0840e58925030413a0c2bd4784304460a5",
+     "version": "xcompiler.3.5.0"
+    },
+    {
+     "packageName": "onnxrutnime",
+     "commit": "26250ae74d2c9a3c6860625ba4a147ddfb936907",
+     "version": "onnxruntime.1.19.0"
+    },
+    {
+     "packageName": "xir",
+     "commit": "0ca4c459790f7dce6cd13797e57820a6de58985e",
+     "version": "xir.3.5.0"
+    },
+    {
+     "packageName": "xrt",
+     "commit": "090e3faccd90abd21e59a4edbf7ed9d9c1016d0b",
+     "version": "xrt.2.19.0"
+    },
+    {
+     "packageName": "graph_engine",
+     "commit": "00d982df0d45817421c38647ea1229978c7da7f7",
+     "version": "graph_engine"
+    }
+   ]
+  },
+  "onnxPath": "C:\\Users\\User02\\Desktop\\paltrinieri\\pipeline_scripts\\quantized_models\\resnet50_quark_int8_from_github.onnx",
+  "sessionOptions": {
+   "config_file": "C:\\\\Users\\\\User02\\Desktop\\\\paltrinieri_ai_analyzer\\\\vaip_config.json",
+   "ep_context_file_path": "",
+   "ep_context_enable": "0",
+   "ep_context_embed_mode": "1"
+  },
+  "aiAnalyzerVisualization": true,
+  "aiAnalyzerProfiling": true
+ },
+ "events": [
+  {
+   "name": "before_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "48041",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330752000",
+     "currentMemoryInBytes": "38686720"
+    }
+   },
+   "dur": "23390"
+  },
+  {
+   "id": "before_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "48041",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b6e000",
+      "current_memory": "13b6e000"
+     }
+    }
+   }
+  },
+  {
+   "id": "before_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "71432",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "16053000"
+     }
+    }
+   }
+  },
+  {
+   "name": "check_cache_hit",
+   "ph": "X",
+   "ts": "71480",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385945600"
+    }
+   }
+  },
+  {
+   "id": "check_cache_hit_mem_usage_1",
+   "ph": "v",
+   "ts": "71480",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1605a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "check_cache_hit_mem_usage_2",
+   "ph": "v",
+   "ts": "71480",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1605a000"
+     }
+    }
+   }
+  },
+  {
+   "name": "update_cache",
+   "ph": "X",
+   "ts": "71484",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385945600",
+     "currentMemoryInBytes": "16384"
+    }
+   },
+   "dur": "112"
+  },
+  {
+   "id": "update_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "71484",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1605a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "update_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "71596",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1605e000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "72579",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385945600",
+     "currentMemoryInBytes": "20480"
+    }
+   },
+   "dur": "14498"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "72579",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "16072000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "87077",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "16077000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "87114",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385945600",
+     "currentMemoryInBytes": "-32624640"
+    }
+   },
+   "dur": "11443"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "87114",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "16077000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "98557",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1415a000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "48036",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330752000",
+     "currentMemoryInBytes": "6209536"
+    }
+   },
+   "dur": "50536"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "48036",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b6e000",
+      "current_memory": "13b6e000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "98573",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1415a000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "47729",
+   "pid": "16284",
+   "tid": "11844",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330752000",
+     "currentMemoryInBytes": "6209536"
+    }
+   },
+   "dur": "50959"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "47729",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b6e000",
+      "current_memory": "13b6e000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "98689",
+   "pid": "16284",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "17011000",
+      "current_memory": "1415a000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "76604",
+   "pid": "35132",
+   "tid": "36112",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "386777088",
+     "currentMemoryInBytes": "8192"
+    }
+   },
+   "dur": "408"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "76604",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "1612d000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "77012",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "1612f000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "77017",
+   "pid": "35132",
+   "tid": "36112",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "386777088",
+     "currentMemoryInBytes": "-30183424"
+    }
+   },
+   "dur": "11950"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "77017",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "1612f000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "88968",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "14466000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "47309",
+   "pid": "35132",
+   "tid": "36112",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "331718656",
+     "currentMemoryInBytes": "8437760"
+    }
+   },
+   "dur": "41670"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "47309",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13c5a000",
+      "current_memory": "13c5a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "88979",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "14466000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "47200",
+   "pid": "35132",
+   "tid": "36112",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "331718656",
+     "currentMemoryInBytes": "8437760"
+    }
+   },
+   "dur": "41865"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "47200",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13c5a000",
+      "current_memory": "13c5a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "89066",
+   "pid": "35132",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "170dc000",
+      "current_memory": "14466000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "78593",
+   "pid": "37992",
+   "tid": "11212",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385789952",
+     "currentMemoryInBytes": "8192"
+    }
+   },
+   "dur": "359"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "78593",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "1603c000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "78952",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "1603e000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "78957",
+   "pid": "37992",
+   "tid": "11212",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385789952",
+     "currentMemoryInBytes": "-29249536"
+    }
+   },
+   "dur": "12404"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "78957",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "1603e000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "91361",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "14459000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "47082",
+   "pid": "37992",
+   "tid": "11212",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330735616",
+     "currentMemoryInBytes": "9367552"
+    }
+   },
+   "dur": "44289"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "47082",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b6a000",
+      "current_memory": "13b6a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "91372",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "14459000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "46956",
+   "pid": "37992",
+   "tid": "11212",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330735616",
+     "currentMemoryInBytes": "9367552"
+    }
+   },
+   "dur": "44498"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "46956",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b6a000",
+      "current_memory": "13b6a000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "91455",
+   "pid": "37992",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16feb000",
+      "current_memory": "14459000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "75762",
+   "pid": "39244",
+   "tid": "44672",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385511424",
+     "currentMemoryInBytes": "8192"
+    }
+   },
+   "dur": "393"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "75762",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "15ff8000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "76156",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "15ffa000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "76161",
+   "pid": "39244",
+   "tid": "44672",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385511424",
+     "currentMemoryInBytes": "-28876800"
+    }
+   },
+   "dur": "11993"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "76161",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "15ffa000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "88154",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "14470000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "47429",
+   "pid": "39244",
+   "tid": "44672",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330387456",
+     "currentMemoryInBytes": "9809920"
+    }
+   },
+   "dur": "40735"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "47429",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b15000",
+      "current_memory": "13b15000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "88165",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "14470000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "47282",
+   "pid": "39244",
+   "tid": "44672",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330387456",
+     "currentMemoryInBytes": "9809920"
+    }
+   },
+   "dur": "41028"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "47282",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b15000",
+      "current_memory": "13b15000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "88310",
+   "pid": "39244",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16fa7000",
+      "current_memory": "14470000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "87090",
+   "pid": "22968",
+   "tid": "20084",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385429504",
+     "currentMemoryInBytes": "20480"
+    }
+   },
+   "dur": "485"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "87090",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "15fe4000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "87576",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "15fe9000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "87583",
+   "pid": "22968",
+   "tid": "20084",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385429504",
+     "currentMemoryInBytes": "-30343168"
+    }
+   },
+   "dur": "12033"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "87583",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "15fe9000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "99617",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "142f9000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "52406",
+   "pid": "22968",
+   "tid": "20084",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330051584",
+     "currentMemoryInBytes": "8609792"
+    }
+   },
+   "dur": "47225"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "52406",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13ac3000",
+      "current_memory": "13ac3000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "99631",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "142f9000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "52213",
+   "pid": "22968",
+   "tid": "20084",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330051584",
+     "currentMemoryInBytes": "8609792"
+    }
+   },
+   "dur": "47548"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "52213",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13ac3000",
+      "current_memory": "13ac3000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "99761",
+   "pid": "22968",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f93000",
+      "current_memory": "142f9000"
+     }
+    }
+   }
+  },
+  {
+   "name": "read_cache",
+   "ph": "X",
+   "ts": "78515",
+   "pid": "19160",
+   "tid": "12116",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385458176",
+     "currentMemoryInBytes": "8192"
+    }
+   },
+   "dur": "509"
+  },
+  {
+   "id": "read_cache_mem_usage_1",
+   "ph": "v",
+   "ts": "78515",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "15fea000"
+     }
+    }
+   }
+  },
+  {
+   "id": "read_cache_mem_usage_2",
+   "ph": "v",
+   "ts": "79025",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "15fec000"
+     }
+    }
+   }
+  },
+  {
+   "name": "after_compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "79030",
+   "pid": "19160",
+   "tid": "12116",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "385458176",
+     "currentMemoryInBytes": "-31850496"
+    }
+   },
+   "dur": "10800"
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "79030",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "15fec000"
+     }
+    }
+   }
+  },
+  {
+   "id": "after_compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "89830",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "1418c000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_internal",
+   "ph": "X",
+   "ts": "48240",
+   "pid": "19160",
+   "tid": "12116",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330579968",
+     "currentMemoryInBytes": "6586368"
+    }
+   },
+   "dur": "41599"
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_1",
+   "ph": "v",
+   "ts": "48240",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b44000",
+      "current_memory": "13b44000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_internal_mem_usage_2",
+   "ph": "v",
+   "ts": "89839",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "1418c000"
+     }
+    }
+   }
+  },
+  {
+   "name": "compile_onnx_model_3",
+   "ph": "X",
+   "ts": "48151",
+   "pid": "19160",
+   "tid": "12116",
+   "args": {
+    "memUsage": {
+     "peakMemoryInBytes": "330579968",
+     "currentMemoryInBytes": "6586368"
+    }
+   },
+   "dur": "41769"
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_1",
+   "ph": "v",
+   "ts": "48151",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "13b44000",
+      "current_memory": "13b44000"
+     }
+    }
+   }
+  },
+  {
+   "id": "compile_onnx_model_3_mem_usage_2",
+   "ph": "v",
+   "ts": "89920",
+   "pid": "19160",
+   "args": {
+    "dumps": {
+     "process_totals": {
+      "peak_memory": "16f9a000",
+      "current_memory": "1418c000"
+     }
+    }
+   }
+  }
+ ],
+ "cpuUsage": [
+  {
+   "avgCpuUtil": 4.61538458,
+   "memPeakWorkingSetSize": 367.601562
+  }
+ ]
+}
