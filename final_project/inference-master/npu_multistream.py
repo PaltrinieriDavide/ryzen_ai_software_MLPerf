@@ -25,7 +25,7 @@ NUM_IMAGES = 10000
 
 image_dir = Path("imagenet_val_dataset\\ILSVRC2012_img_val")
 map_file = Path("imagenet_val_dataset\\val_map.txt")
-results_dir = Path("results_multistream")
+results_dir = Path("results\\miltistream")
 onnx_model_path = Path("uantized_models\\resnet50_quark_int8.onnx")
 vaip_config = Path("vaip_config.json")
 
