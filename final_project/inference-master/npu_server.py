@@ -26,7 +26,6 @@ map_file = Path("imagenet_val_dataset\\val_map.txt")
 results_dir = Path("results\\server_test")
 onnx_model_path = Path("quantized_models\\resnet50_quark_int8.onnx")
 
-# Ensure results directory exists
 os.makedirs(results_dir, exist_ok=True)
 original_working_dir = os.getcwd()
 os.chdir(results_dir)
