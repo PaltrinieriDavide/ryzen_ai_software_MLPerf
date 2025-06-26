@@ -150,13 +150,10 @@ def run_performance_test(sut):
     
     settings.server_target_qps = 20
     
-    # ===============================================
-    # === QUICK TEST SETTINGS                     ===
-    # ===============================================
+
     print("Using settings for a quick test run (~1-2 seconds)...")
     settings.min_duration_ms = 1000
     settings.min_query_count = 1
-    # ===============================================
 
     performance_count = len(image_paths)
 
@@ -189,9 +186,5 @@ if __name__ == "__main__":
     finally:
         print("Test run finished or failed. Stopping SUT...")
         sut.stop()
-    
-    print("\n--- QUICK TEST COMPLETE ---")
-    print("If the script exited without hanging, the deadlock is fixed.")
-    print("You can now increase min_duration_ms and min_query_count for a full run.")
     
     os.chdir(original_working_dir)
