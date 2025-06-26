@@ -136,8 +136,6 @@ class SUT_Server:
 
 # === Main Test Logic ===
 def run_performance_test(sut):
-    print("\nRunning QUICK PERFORMANCE test (Server)...")
-
     log_settings = LogSettings()
     log_settings.log_output.outdir = "."
     log_settings.log_output.copy_summary_to_stdout = True
