@@ -147,8 +147,6 @@ def run_performance_test(sut):
     
     settings.server_target_qps = 20
     
-
-    print("Using settings for a quick test run (~1-2 seconds)...")
     settings.min_duration_ms = 1000
     settings.min_query_count = 1
 
