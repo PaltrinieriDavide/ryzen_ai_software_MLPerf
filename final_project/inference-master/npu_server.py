@@ -99,7 +99,7 @@ class SUT_Server:
 
             if work_items[0] is self.poison_pill:
                 break
-
+            # forse da togliere con batch size = 1
             while len(work_items) < self.batch_size:
                 try:
                     next_item = self.work_queue.get_nowait()
