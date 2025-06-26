@@ -1,0 +1,36 @@
+AMDPROFILER POWER PROFILE REPORT
+
+AMDuProfCLI.exe Version 5.1.576.0,
+
+PROFILE DETAILS
+CPU Details:,Family(0x1a) Model(0x24)
+Sampling Interval:,1000 milli-seconds
+Profile Start Time:,Jun-21-2025_11-24-53,
+Profile Duration:,10 seconds
+
+PROFILED COUNTERS
+COUNTER ID,NAME,CATEGORY,UNIT,DESCRIPTION
+72.,socket0-package-power,Power,W,Socket0-Average Package Power reported in Watts.
+74.,core0-power,Power,W,Core0-Average Power reported in Watts.
+76.,core1-power,Power,W,Core1-Average Power reported in Watts.
+78.,core2-power,Power,W,Core2-Average Power reported in Watts.
+80.,core3-power,Power,W,Core3-Average Power reported in Watts.
+82.,core4-power,Power,W,Core4-Average Power reported in Watts.
+84.,core5-power,Power,W,Core5-Average Power reported in Watts.
+86.,core6-power,Power,W,Core6-Average Power reported in Watts.
+88.,core7-power,Power,W,Core7-Average Power reported in Watts.
+90.,core8-power,Power,W,Core8-Average Power reported in Watts.
+92.,core9-power,Power,W,Core9-Average Power reported in Watts.
+94.,core10-power,Power,W,Core10-Average Power reported in Watts.
+96.,core11-power,Power,W,Core11-Average Power reported in Watts.
+
+PROFILE RECORDS
+RecordId,Timestamp,socket0-package-power,core0-power,core1-power,core2-power,core3-power,core4-power,core5-power,core6-power,core7-power,core8-power,core9-power,core10-power,core11-power
+1,11:24:54:505,    9.30,    0.37,    0.37,    0.38,    0.54,    0.35,    0.33,    0.34,    0.34,    0.32,    0.32,    0.81,    0.35
+2,11:24:55:507,    6.84,    0.27,    0.27,    0.27,    0.29,    0.23,    0.21,    0.23,    0.37,    0.21,    0.21,    0.24,    0.22
+3,11:24:56:511,    6.52,    0.26,    0.26,    0.26,    0.30,    0.23,    0.21,    0.20,    0.19,    0.21,    0.22,    0.23,    0.23
+4,11:24:57:514,    7.92,    0.29,    0.29,    0.29,    0.51,    0.27,    0.32,    0.27,    0.25,    0.27,    0.33,    0.30,    0.29
+5,11:24:58:523,    7.08,    0.27,    0.30,    0.27,    0.34,    0.25,    0.23,    0.24,    0.23,    0.23,    0.24,    0.24,    0.31
+6,11:24:59:526,    6.18,    0.24,    0.24,    0.24,    0.27,    0.22,    0.18,    0.20,    0.19,    0.20,    0.17,    0.21,    0.20
+7,11:25:0:528,    6.57,    0.26,    0.25,    0.26,    0.26,    0.24,    0.20,    0.22,    0.19,    0.21,    0.20,    0.22,    0.28
+8,11:25:1:536,    7.21,    0.29,    0.29,    0.29,    0.29,    0.28,    0.27,    0.27,    0.25,    0.26,    0.25,    0.27,    0.28
