@@ -4,13 +4,13 @@ from torchvision import transforms
 from tqdm import tqdm # For progress bar
 import os
 
-# --- Configuration ---
+# Configuration
 CALIB_IMAGE_DIR = "small_imagenet"  # Directory with your raw JPEG calibration images
 OUTPUT_CALIB_DATA_DIR = "calib_data_imagenet" # Directory to save preprocessed numpy arrays
 NUM_CALIB_SAMPLES = 320
 IMAGE_SIZE = 224
 
-# --- Preprocessing ---
+# Preprocessing
 # Standard ImageNet normalization
 preprocess = transforms.Compose([
     transforms.Resize(256),

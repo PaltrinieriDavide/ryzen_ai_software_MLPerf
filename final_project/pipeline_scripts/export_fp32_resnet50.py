@@ -2,7 +2,7 @@ import torch
 import torchvision.models as models
 import os
 
-# --- Configuration ---
+# Configuration
 MODEL_NAME = "resnet50"
 ONNX_FP32_MODEL_PATH = f"models/{MODEL_NAME}_fp32.onnx"
 OPSET_VERSION = 13
@@ -14,7 +14,7 @@ def export_model():
     model.eval()
 
     # Create a dummy input tensor with the expected dimensions
-    # ResNet50 typically takes (batch_size, channels, height, width)
+    # ResNet50 takes (batch_size, channels, height, width)
     # ImageNet images are usually 224x224
     dummy_input = torch.randn(1, 3, 224, 224)
 

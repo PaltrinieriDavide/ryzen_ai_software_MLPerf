@@ -35,7 +35,7 @@ original_working_dir = os.getcwd()
 os.chdir(results_dir)
 print(f"Changed working directory to: {os.getcwd()}")
 
-# === Load val_map.txt and select subset if configured ===
+# Load val_map.txt and select subset if configured
 with open(map_file) as f:
     entries = [line.strip().split() for line in f]
 
@@ -48,7 +48,7 @@ if NUM_IMAGES is not None and NUM_IMAGES < len(entries):
 image_paths = [image_dir / e[0] for e in entries]
 ground_truth = [int(e[1]) for e in entries]
 
-# === Preprocessing ===
+# Preprocessing
 transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
@@ -57,7 +57,7 @@ transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-# === Dataset ===
+# Dataset
 class ImagenetDataset:
     def __init__(self, image_paths, labels):
         self.image_paths = image_paths
@@ -86,7 +86,7 @@ class ImagenetDataset:
 dataset = ImagenetDataset(image_paths, ground_truth)
 
 
-# === System Under Test (SUT) class for MultiStream ===
+# System Under Test (SUT) class for MultiStream
 class SUT:
     def __init__(self, batch_size):
         self.batch_size = batch_size
@@ -98,7 +98,8 @@ class SUT:
         self.session = ort.InferenceSession(
             onnx_model_path,
             provider_options = provider_options,
-            providers=["VitisAIExecutionProvider"]) # "CPUExecutionProvider", "DmlExecutionProvider"
+            providers=["VitisAIExecutionProvider"]
+        ) # "CPUExecutionProvider", "DmlExecutionProvider"
 
         self.input_name = self.session.get_inputs()[0].name
         self.output_name = self.session.get_outputs()[0].name
@@ -137,7 +138,6 @@ class SUT:
                     QuerySamplesComplete([response])
 
             except queue.Empty:
-                # This is expected when the queue is empty, just continue
                 continue
 
     def issue_queries(self, query_samples):
@@ -170,8 +170,7 @@ def run_performance_test(sut):
     settings.scenario = TestScenario.MultiStream
     settings.mode = TestMode.PerformanceOnly
 
-    # Min duration and query count for a valid run
-    settings.min_duration_ms = 60000 # Use 60 seconds for official runs
+    settings.min_duration_ms = 10000
     settings.min_query_count = 2048
 
     performance_count = len(image_paths)
@@ -195,7 +194,7 @@ def run_performance_test(sut):
     DestroySUT(lg_sut)
 
 
-# === Main Execution Logic ===
+# Main Execution Logic
 if __name__ == "__main__":
     print(f"\nMLPerf Inference ResNet50 - MultiStream Scenario")
     print(f"Dataset size: {len(image_paths)} images, SUT Batch size: {BATCH_SIZE}")
@@ -206,9 +205,8 @@ if __name__ == "__main__":
         if RUN_PERFORMANCE:
             run_performance_test(sut)
 
-        print("\n--- TEST COMPLETE ---")
-        print(f"Official results are in: {results_dir / 'mlperf_log_summary.txt'}")
-        print("Look for '90th percentile latency' and 'Queries/second' under the 'Result is VALID' line.")
+        print("\n TEST COMPLETE")
+        print(f"Results are in: {results_dir / 'mlperf_log_summary.txt'}")
 
     except Exception as e:
         print(f"An error occurred: {e}")

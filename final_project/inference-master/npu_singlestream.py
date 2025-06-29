@@ -11,7 +11,6 @@ import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-
 from mlperf_loadgen import (
     TestSettings, TestScenario, TestMode,
     QuerySample, QuerySampleResponse,
@@ -19,10 +18,6 @@ from mlperf_loadgen import (
     ConstructQSL, ConstructSUT, DestroyQSL, DestroySUT,
     LogSettings, LoggingMode
 )
-"""
-inside the loadgen directory to export the modules
-pip install .
-"""
 
 RUN_PERFORMANCE = True
 BATCH_SIZE = 1
@@ -38,7 +33,7 @@ os.makedirs(results_dir, exist_ok=True)
 original_working_dir = os.getcwd()
 os.chdir(results_dir)
 
-# === Load val_map.txt and select subset if configured ===
+# Load val_map.txt and select subset if configured
 with open(map_file) as f:
     entries = [line.strip().split() for line in f]
 
@@ -53,7 +48,7 @@ image_paths = [image_dir / e[0] for e in entries]
 ground_truth = [int(e[1]) for e in entries]
 sample_indices = list(range(len(image_paths)))
 
-# === Preprocessing ===
+# Preprocessing
 transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
@@ -62,7 +57,7 @@ transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-# === Dataset ===
+# Dataset
 class ImagenetDataset:
     def __init__(self, image_paths, labels):
         self.image_paths = image_paths
@@ -92,11 +87,10 @@ session = ort.InferenceSession(
     onnx_model_path,
     providers=["VitisAIExecutionProvider"])
 
-
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
 
-# === Performance Metrics Collection ===
+# Performance Metrics Collection
 predictions = {}
 issued_sample_indices = set()
 latencies = []
@@ -113,7 +107,7 @@ def issue_queries(query_samples):
 
     for query in query_samples:
         sample_idx = query.index
-        tensor, _ = dataset.get_sample(sample_idx)  # Assuming (data, label)
+        tensor, _ = dataset.get_sample(sample_idx)
 
         batch_start = time.time()
         output = session.run([output_name], {input_name: tensor})[0]
@@ -170,8 +164,7 @@ def run_performance_test():
     log_settings.log_output.outdir = "."  # Use current directory (which is now results_dir)
     log_settings.log_output.copy_summary_to_stdout = True
     log_settings.log_output.copy_detail_to_stdout = True
-    
-    
+
     settings = TestSettings()
     settings.scenario = TestScenario.SingleStream
     settings.mode = TestMode.PerformanceOnly
@@ -248,32 +241,6 @@ def save_performance_stats():
     print(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/second")
     print(f"Average latency: {stats['latency_stats']['mean']:.2f} ms/sample")
     #print(f"P90 latency: {stats['latency_stats']['p90']:.2f} ms")
-    
-    # Save performance results
-    perf_txt = Path("performance.txt")
-    with open(perf_txt, "w") as f:
-        f.write(f"===== PERFORMANCE RESULTS =====\n\n")
-        f.write(f"Scenario: Offline\n")
-        f.write(f"Total samples processed: {stats['total_samples']}\n")
-        f.write(f"Test duration: {stats['test_duration_seconds']:.2f} seconds\n")
-        f.write(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/second\n\n")
-        
-        f.write(f"===== LATENCY (ms) =====\n")
-        f.write(f"Mean: {stats['latency_stats']['mean']:.2f}\n")
-        f.write(f"Median: {stats['latency_stats']['median']:.2f}\n")
-        f.write(f"Min: {stats['latency_stats']['min']:.2f}\n")
-        f.write(f"Max: {stats['latency_stats']['max']:.2f}\n")
-        f.write(f"90th percentile: {stats['latency_stats']['p90']:.2f}\n")
-        f.write(f"95th percentile: {stats['latency_stats']['p95']:.2f}\n")
-        f.write(f"99th percentile: {stats['latency_stats']['p99']:.2f}\n\n")
-        
-        f.write(f"===== BATCH PROCESSING TIME (ms) =====\n")
-        f.write(f"Mean: {stats['batch_stats']['mean']:.2f}\n")
-        f.write(f"Median: {stats['batch_stats']['median']:.2f}\n")
-        f.write(f"Min: {stats['batch_stats']['min']:.2f}\n")
-        f.write(f"Max: {stats['batch_stats']['max']:.2f}\n")
-    
-    print(f"\n Performance statistics written to {perf_txt}")
     
     perf_json = Path("performance_stats.json")
     with open(perf_json, "w") as f:

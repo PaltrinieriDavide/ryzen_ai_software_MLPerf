@@ -20,34 +20,28 @@ from mlperf_loadgen import (
     LogSettings, LoggingMode
 )
 """
-inside the loadgen directory to export the modules
+inside the loadgen directory to export the mlperf_modules, just do
 pip install .
 """
-
-
 
 RUN_ACCURACY = False
 RUN_PERFORMANCE = True
 BATCH_SIZE = 1
-
 NUM_IMAGES = 5000  # None = use all available images
 MIN_DURATION_MS = 1
 MIN_QUERY_COUNT = 1
-
 
 image_dir = Path("imagenet_val_dataset\\ILSVRC2012_img_val")
 map_file = Path("imagenet_val_dataset\\val_map.txt")
 results_dir = Path("results\\offline")
 onnx_model_path = Path("quantized_models\\resnet50_quark_int8.onnx")
 
-
-
 os.makedirs(results_dir, exist_ok=True)
 
 original_working_dir = os.getcwd()
 os.chdir(results_dir)
 
-# === Load val_map.txt and select subset if configured ===
+# Load val_map.txt and select subset if configured
 with open(map_file) as f:
     entries = [line.strip().split() for line in f]
 
@@ -62,7 +56,7 @@ image_paths = [image_dir / e[0] for e in entries]
 ground_truth = [int(e[1]) for e in entries]
 sample_indices = list(range(len(image_paths)))
 
-# === Preprocessing ===
+# Preprocessing images
 transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
@@ -71,7 +65,7 @@ transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-# === Dataset ===
+# Dataset
 class ImagenetDataset:
     def __init__(self, image_paths, labels):
         self.image_paths = image_paths
@@ -96,23 +90,20 @@ class ImagenetDataset:
 
 dataset = ImagenetDataset(image_paths, ground_truth)
 
-
-provider_options = [{
-   'config_file': 'vaip_config.json' 
-}]
+#provider_options = [{
+#   'config_file': 'vaip_config.json'
+#}]
 
 session = ort.InferenceSession(
     str(onnx_model_path),
     providers=["VitisAIExecutionProvider"]
     )
 
-print(os.environ["XLNX_VART_FIRMWARE"])
-print(os.environ["XLNX_TARGET_NAME"])
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
 print(f" Model loaded with input name: {input_name}, output name: {output_name}")
 
-# === Performance Metrics Collection ===
+# Performance metrics collection
 predictions = {}
 issued_sample_indices = set()
 latencies = []
@@ -143,11 +134,8 @@ def issue_queries(query_samples):
         outputs = session.run([output_name], {input_name: mini_batch})[0]
 
         batch_end = time.time()
-        
-
         batch_latency = batch_end - batch_start
         batch_times.append(batch_latency)
-        
         per_sample_latency = batch_latency / len(batch_indices)
         latencies.extend([per_sample_latency] * len(batch_indices))
         
@@ -191,14 +179,6 @@ def run_accuracy_test():
     log_settings.log_output.copy_summary_to_stdout = True
     log_settings.log_output.copy_detail_to_stdout = True
     
-    available_modes = dir(LoggingMode)
-    if "ASYNC_WRITE_BACK" in available_modes:
-        log_settings.log_mode = LoggingMode.ASYNC_WRITE_BACK
-    elif "AsyncWriteBack" in available_modes:
-        log_settings.log_mode = LoggingMode.AsyncWriteBack
-    else:
-        print("Warning: ASYNC_WRITE_BACK logging mode not found, using default mode")
-    
     settings = TestSettings()
     settings.scenario = TestScenario.Offline
     settings.mode = TestMode.AccuracyOnly
@@ -238,7 +218,6 @@ def run_performance_test():
     end_time = None
     
     print("\n Running PERFORMANCE test...")
-    
 
     log_settings = LogSettings()
     log_settings.log_output.outdir = "."
@@ -269,8 +248,7 @@ def run_performance_test():
     )
     
     start_time = time.time()
-    
-    StartTest(sut, qsl, settings) #start test
+    StartTest(sut, qsl, settings)
     
     if end_time is None:
         end_time = time.time()
@@ -284,7 +262,7 @@ def run_performance_test():
         print("No batch times collected, using dummy values")
         batch_times = [avg_latency * BATCH_SIZE]
     
-    # Save performance statistics
+    # Save performance statistics, purely descriptive, not official LoadGen statistics
     perf_stats = save_performance_stats()
     
     # Cleanup
@@ -369,13 +347,8 @@ def save_performance_stats():
             "max": max(batch_times) * 1000,  # ms
         }
     }
-    
-    print(f"\n PERFORMANCE SUMMARY:")
-    print(f"Total samples: {stats['total_samples']}")
-    print(f"Duration: {stats['test_duration_seconds']:.2f} seconds")
-    print(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/second")
-    
-    # Save performance results
+
+    # Save performance results, only for offline scenario since we have one query and loadgen doesn't calculate sample level metrics
     perf_txt = Path("performance.txt")
     with open(perf_txt, "w") as f:
         f.write(f"===== PERFORMANCE RESULTS =====\n\n")
@@ -383,7 +356,7 @@ def save_performance_stats():
         f.write(f"Total samples processed: {stats['total_samples']}\n")
         f.write(f"Test duration: {stats['test_duration_seconds']:.2f} seconds\n")
         f.write(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/second\n\n")
-        
+
         f.write(f"===== LATENCY (ms) =====\n")
         f.write(f"Mean: {stats['latency_stats']['mean']:.2f}\n")
         f.write(f"Median: {stats['latency_stats']['median']:.2f}\n")
@@ -392,30 +365,25 @@ def save_performance_stats():
         f.write(f"90th percentile: {stats['latency_stats']['p90']:.2f}\n")
         f.write(f"95th percentile: {stats['latency_stats']['p95']:.2f}\n")
         f.write(f"99th percentile: {stats['latency_stats']['p99']:.2f}\n\n")
-        
+
         f.write(f"===== BATCH PROCESSING TIME (ms) =====\n")
         f.write(f"Mean: {stats['batch_stats']['mean']:.2f}\n")
         f.write(f"Median: {stats['batch_stats']['median']:.2f}\n")
         f.write(f"Min: {stats['batch_stats']['min']:.2f}\n")
         f.write(f"Max: {stats['batch_stats']['max']:.2f}\n")
-    
+
     print(f"\n Performance statistics written to {perf_txt}")
+
+    print(f"\n PERFORMANCE SUMMARY:")
+    print(f"Total samples: {stats['total_samples']}")
+    print(f"Duration: {stats['test_duration_seconds']:.2f} seconds")
+    print(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/second")
     
     # Save detailed performance JSON
     perf_json = Path("performance_stats.json")
     with open(perf_json, "w") as f:
         json.dump(stats, f, indent=2)
-    
-    summary_file = Path("mlperf_log_summary.txt")
-    if not summary_file.exists():
-        print(f"⚠️ MLPerf log summary not found, creating a basic version")
-        with open(summary_file, "w") as f:
-            f.write(f"MLPerf Inference - ResNet50 - Offline Scenario\n")
-            f.write(f"Samples: {stats['total_samples']}\n")
-            f.write(f"Throughput: {stats['throughput_samples_per_second']:.2f} samples/sec\n")
-            f.write(f"Mean latency: {stats['latency_stats']['mean']:.2f} ms\n")
-            f.write(f"90th percentile latency: {stats['latency_stats']['p90']:.2f} ms\n")
-    
+
     return stats
 
 # === Run the tests ===
@@ -442,7 +410,6 @@ if RUN_PERFORMANCE:
 print(f"Results saved to: {os.getcwd()}")
 
 summary_file = Path("mlperf_log_summary.txt")
-detail_file = Path("mlperf_log_detail.json")
 
 if not summary_file.exists():
     print(f" MLPerf log summary file not found at: {summary_file}")

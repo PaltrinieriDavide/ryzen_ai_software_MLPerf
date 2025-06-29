@@ -8,8 +8,8 @@ from datetime import datetime
 
 class MonitorConfig:
     """Default settings for the NPU monitoring utility."""
-    #XRT_SMI_PATH = "xrt-smi.exe"  # Assumes the tool is in the system's PATH
-    XRT_SMI_PATH = "C:\\Users\\aiene\\Downloads\\RAI_1.3.1_242_WHQL\\npu_mcdm_stack_prod\\xrt-smi.exe" # Uncomment and set if not in PATH
+    #XRT_SMI_PATH = "xrt-smi.exe"
+    XRT_SMI_PATH = "C:\\Users\\aiene\\Downloads\\RAI_1.3.1_242_WHQL\\npu_mcdm_stack_prod\\xrt-smi.exe"
     
     DEFAULT_INTERVAL_S = 5
     DEFAULT_LOG_FILE = "npu_monitor.log"

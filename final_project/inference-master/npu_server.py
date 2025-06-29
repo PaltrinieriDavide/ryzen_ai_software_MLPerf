@@ -17,7 +17,6 @@ from mlperf_loadgen import (
     LogSettings, LoggingMode
 )
 
-# === Configuration ===
 NUM_IMAGES = 1000
 BATCH_SIZE = 1
 
@@ -31,7 +30,7 @@ original_working_dir = os.getcwd()
 os.chdir(results_dir)
 print(f"Changed working directory to: {os.getcwd()}")
 
-# === Dataset Loading ===
+# Dataset Loading
 with open(map_file) as f:
     entries = [line.strip().split() for line in f]
 
@@ -74,7 +73,7 @@ class ImagenetDataset:
 dataset = ImagenetDataset(image_paths)
 
 
-# === System Under Test (SUT) for Server/MultiStream - WITH WORKER THREAD & POISON PILL ===
+# System Under Test (SUT) for Server - WITH WORKER THREAD & POISON PILL
 class SUT_Server:
     def __init__(self, batch_size):
         self.batch_size = batch_size
@@ -90,28 +89,17 @@ class SUT_Server:
         self.input_name = self.session.get_inputs()[0].name
         self.output_name = self.session.get_outputs()[0].name
         print(f"Model loaded with input name: {self.input_name}, output name: {self.output_name}")
-
+        # Consumer thread
         self.worker_thread.start()
 
     def worker_loop(self):
         while True:
-            work_items = [self.work_queue.get()]
+            work_item = [self.work_queue.get()]
 
-            if work_items[0] is self.poison_pill:
+            if work_item is self.poison_pill:
                 break
-            # forse da togliere con batch size = 1
-            while len(work_items) < self.batch_size:
-                try:
-                    next_item = self.work_queue.get_nowait()
-                    if next_item is self.poison_pill:
-                        self.work_queue.put(self.poison_pill)
-                        break
-                    work_items.append(next_item)
-                except queue.Empty:
-                    break
 
-            if not work_items:
-                continue
+            work_items = [work_item]
 
             tensors = [dataset.get_sample(q.index) for q in work_items]
             batch_tensor = np.concatenate(tensors, axis=0)
