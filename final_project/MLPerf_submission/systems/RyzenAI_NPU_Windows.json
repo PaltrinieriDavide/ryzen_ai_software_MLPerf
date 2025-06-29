@@ -7,8 +7,8 @@
   "system_name": "RyzenAI_NPU_Windows",
   "number_of_nodes": 1,
   "host_processors_per_node": 1,
-  "host_processor_model_name": "AMD Ryzen 7 7840U",
-  "host_processor_core_count": 8,
+  "host_processor_model_name": "AMD Ryzen AI 9 HX 370",
+  "host_processor_core_count": 12,
   "host_processor_vcpu_count": 16,
   "host_processor_frequency": "3300MHz",
   "host_processor_caches": "L1: 32KB I + 32KB D per core, L2: 1MB per core, L3: 16MB shared",
@@ -30,9 +30,9 @@
   "accelerator_interconnect": "Integrated on-die",
   "accelerator_interconnect_topology": "N/A",
   "cooling": "Air-cooled",
-  "hw_notes": "Tested in AMD Cloud development environment",
+  "hw_notes": "Strix machine",
   "framework": "PyTorch + ONNX Runtime",
-  "other_software_stack": "Ryzen AI SDK 1.4.0, ipykernel 3, Conda",
+  "other_software_stack": "Ryzen AI SDK 1.3.1, Conda",
   "operating_system": "Windows 11",
-  "sw_notes": "Benchmark executed from Jupyter Lab using Conda environment"
+  "sw_notes": "Benchmark executed from NECST Lab of Politecnico di Milano"
 }
