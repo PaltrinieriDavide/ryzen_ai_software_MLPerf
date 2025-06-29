@@ -1,0 +1,2247 @@
+{
+  "flexml_graph_metadata": {
+    "blocks": [
+      {
+        "children": [],
+        "data_transfers": [],
+        "design_name": "design1",
+        "id": "ipu_0",
+        "name": "pdi_subgraph_0",
+        "operators": [
+          {
+            "id": "subgraph_(input)_upload_0",
+            "name": "subgraph_(input)_upload_0",
+            "operator_type": "upload",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(input_DequantizeLinear_Output)@subgraph_(input)_upload_0",
+                "name": "(input_DequantizeLinear_Output)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(input_DequantizeLinear_Output)_upload_0@subgraph_(input)_upload_0",
+                "name": "(input_DequantizeLinear_Output)_upload_0",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(input_DequantizeLinear_Output_vaip_1)",
+            "name": "subgraph_(input_DequantizeLinear_Output_vaip_1)",
+            "operator_type": "transpose-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(input_DequantizeLinear_Output)_upload_0@subgraph_(input_DequantizeLinear_Output_vaip_1)",
+                "name": "(input_DequantizeLinear_Output)_upload_0",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0@subgraph_(input_DequantizeLinear_Output_vaip_1)",
+                "name": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/conv1/Conv_output_0_vaip_3)",
+            "name": "subgraph_(/conv1/Conv_output_0_vaip_3)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0@subgraph_(/conv1/Conv_output_0_vaip_3)",
+                "name": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)@subgraph_(/conv1/Conv_output_0_vaip_3)",
+                "name": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+            "name": "subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+            "operator_type": "pool-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)@subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+                "name": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+                "name": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)",
+            "name": "subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)",
+                "name": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)@subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)",
+                "name": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)",
+            "name": "subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)",
+                "name": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)@subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)",
+                "name": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)",
+            "name": "subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)@subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)",
+                "name": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)@subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)",
+                "name": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)",
+            "name": "subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)@subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)",
+                "name": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)@subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)",
+                "name": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+            "name": "subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+                "name": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+                "name": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+                "name": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)",
+            "name": "subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)",
+                "name": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)@subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)",
+                "name": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)",
+            "name": "subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)@subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)",
+                "name": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)@subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)",
+                "name": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)",
+            "name": "subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)@subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)",
+                "name": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)@subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)",
+                "name": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+            "name": "subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+                "name": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+                "name": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+                "name": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)",
+            "name": "subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)",
+                "name": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)@subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)",
+                "name": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)",
+            "name": "subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)@subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)",
+                "name": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)@subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)",
+                "name": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)",
+            "name": "subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)@subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)",
+                "name": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)@subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)",
+                "name": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+            "name": "subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+                "name": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+                "name": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+                "name": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)",
+            "name": "subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)",
+                "name": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)@subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)",
+                "name": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)",
+            "name": "subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)",
+                "name": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)@subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)",
+                "name": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)",
+            "name": "subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)@subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)",
+                "name": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)@subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)",
+                "name": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)",
+            "name": "subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)@subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)",
+                "name": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)@subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)",
+                "name": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+            "name": "subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+                "name": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+                "name": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+                "name": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)",
+            "name": "subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)",
+                "name": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)@subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)",
+                "name": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)",
+            "name": "subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)@subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)",
+                "name": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)@subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)",
+                "name": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)",
+            "name": "subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)@subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)",
+                "name": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)@subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)",
+                "name": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+            "name": "subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+                "name": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+                "name": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+                "name": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)",
+            "name": "subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)",
+                "name": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)@subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)",
+                "name": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)",
+            "name": "subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)@subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)",
+                "name": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)@subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)",
+                "name": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)",
+            "name": "subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)@subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)",
+                "name": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)@subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)",
+                "name": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+            "name": "subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+                "name": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+                "name": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+                "name": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)",
+            "name": "subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)",
+                "name": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)@subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)",
+                "name": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)",
+            "name": "subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)@subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)",
+                "name": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)@subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)",
+                "name": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)",
+            "name": "subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)@subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)",
+                "name": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)@subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)",
+                "name": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+            "name": "subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+                "name": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+                "name": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+                "name": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)",
+            "name": "subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)",
+                "name": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)@subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)",
+                "name": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)",
+            "name": "subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)",
+                "name": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)@subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)",
+                "name": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)",
+            "name": "subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)@subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)",
+                "name": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)@subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)",
+                "name": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)",
+            "name": "subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)@subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)",
+                "name": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)@subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)",
+                "name": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+            "name": "subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+                "name": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+                "name": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+                "name": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)",
+            "name": "subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)",
+                "name": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)@subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)",
+                "name": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)",
+            "name": "subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)@subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)",
+                "name": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)@subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)",
+                "name": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)",
+            "name": "subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)@subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)",
+                "name": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)@subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)",
+                "name": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+            "name": "subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+                "name": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+                "name": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+                "name": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)",
+            "name": "subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)",
+                "name": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)@subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)",
+                "name": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)",
+            "name": "subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)@subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)",
+                "name": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)@subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)",
+                "name": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)",
+            "name": "subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)@subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)",
+                "name": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)@subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)",
+                "name": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+            "name": "subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+                "name": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+                "name": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+                "name": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)",
+            "name": "subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)",
+                "name": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)@subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)",
+                "name": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)",
+            "name": "subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)@subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)",
+                "name": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)@subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)",
+                "name": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)",
+            "name": "subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)@subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)",
+                "name": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)@subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)",
+                "name": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+            "name": "subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+                "name": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+                "name": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+                "name": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)",
+            "name": "subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)",
+                "name": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)@subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)",
+                "name": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)",
+            "name": "subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)@subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)",
+                "name": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)@subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)",
+                "name": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)",
+            "name": "subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)@subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)",
+                "name": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)@subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)",
+                "name": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+            "name": "subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+                "name": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+                "name": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+                "name": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)",
+            "name": "subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)",
+                "name": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)@subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)",
+                "name": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)",
+            "name": "subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)@subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)",
+                "name": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)@subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)",
+                "name": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)",
+            "name": "subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)@subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)",
+                "name": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)@subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)",
+                "name": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+            "name": "subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+                "name": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+                "name": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+                "name": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)",
+            "name": "subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)",
+                "name": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)@subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)",
+                "name": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)",
+            "name": "subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)",
+                "name": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)@subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)",
+                "name": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)",
+            "name": "subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)@subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)",
+                "name": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)@subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)",
+                "name": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)",
+            "name": "subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)@subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)",
+                "name": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)@subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)",
+                "name": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+            "name": "subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+                "name": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+                "name": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+                "name": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)",
+            "name": "subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)",
+                "name": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)@subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)",
+                "name": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)",
+            "name": "subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)@subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)",
+                "name": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)@subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)",
+                "name": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)",
+            "name": "subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)@subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)",
+                "name": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)@subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)",
+                "name": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+            "name": "subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+                "name": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+                "name": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+                "name": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)",
+            "name": "subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)",
+                "name": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)@subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)",
+                "name": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)",
+            "name": "subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)@subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)",
+                "name": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)@subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)",
+                "name": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)",
+            "name": "subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)@subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)",
+                "name": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)@subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)",
+                "name": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+            "name": "subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+            "operator_type": "eltwise-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+                "name": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)",
+                "properties": []
+              },
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+                "name": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+                "name": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+            "name": "subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+            "operator_type": "pool-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)@subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+                "name": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)@subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+                "name": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)",
+            "name": "subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)",
+            "operator_type": "conv2d-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)@subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)",
+                "name": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3@subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)",
+                "name": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped",
+            "name": "subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped",
+            "operator_type": "reshape-fix",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped",
+                "name": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(output)_download_0@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped",
+                "name": "(output)_download_0",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          },
+          {
+            "id": "subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0",
+            "name": "subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0",
+            "operator_type": "download",
+            "ports": [
+              {
+                "direction": "in",
+                "id": "(output)_download_0@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0",
+                "name": "(output)_download_0",
+                "properties": []
+              },
+              {
+                "direction": "out",
+                "id": "(output)@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0",
+                "name": "(output)",
+                "properties": []
+              }
+            ],
+            "processor": "NPU"
+          }
+        ],
+        "processor": "NPU",
+        "properties": []
+      }
+    ],
+    "connections": [
+      {
+        "from_port_id": "(input_DequantizeLinear_Output)@(input)",
+        "id": "C_0",
+        "properties": [],
+        "to_port_id": "(input_DequantizeLinear_Output)@subgraph_(input)_upload_0"
+      },
+      {
+        "from_port_id": "(input_DequantizeLinear_Output)_upload_0@subgraph_(input)_upload_0",
+        "id": "C_1",
+        "properties": [],
+        "to_port_id": "(input_DequantizeLinear_Output)_upload_0@subgraph_(input_DequantizeLinear_Output_vaip_1)"
+      },
+      {
+        "from_port_id": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0@subgraph_(input_DequantizeLinear_Output_vaip_1)",
+        "id": "C_2",
+        "properties": [],
+        "to_port_id": "(input_DequantizeLinear_Output_vaip_1)_inserted_fix_0@subgraph_(/conv1/Conv_output_0_vaip_3)"
+      },
+      {
+        "from_port_id": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)@subgraph_(/conv1/Conv_output_0_vaip_3)",
+        "id": "C_3",
+        "properties": [],
+        "to_port_id": "(/relu/Relu_output_0_DequantizeLinear_Output_vaip_165)@subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)"
+      },
+      {
+        "from_port_id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+        "id": "C_4",
+        "properties": [],
+        "to_port_id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)"
+      },
+      {
+        "from_port_id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)",
+        "id": "C_5",
+        "properties": [],
+        "to_port_id": "(/maxpool/MaxPool_output_0_DequantizeLinear_Output/duplicated_vaip_172)@subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)@subgraph_(/layer1/layer1.0/conv1/Conv_output_0_vaip_8)",
+        "id": "C_6",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_168)@subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)@subgraph_(/layer1/layer1.0/conv2/Conv_output_0_vaip_11)",
+        "id": "C_7",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_170)@subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)@subgraph_(/layer1/layer1.0/conv3/Conv_output_0_vaip_14)",
+        "id": "C_8",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_171)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)@subgraph_(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_vaip_17)",
+        "id": "C_9",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_173)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+        "id": "C_10",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)@subgraph_(/layer1/layer1.1/conv1/Conv_output_0_vaip_20)",
+        "id": "C_11",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_179)@subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)@subgraph_(/layer1/layer1.1/conv2/Conv_output_0_vaip_23)",
+        "id": "C_12",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_181)@subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.0/Add_output_0_vaip_174)",
+        "id": "C_13",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_177)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)@subgraph_(/layer1/layer1.1/conv3/Conv_output_0_vaip_26)",
+        "id": "C_14",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_182)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+        "id": "C_15",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)@subgraph_(/layer1/layer1.2/conv1/Conv_output_0_vaip_29)",
+        "id": "C_16",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_188)@subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)@subgraph_(/layer1/layer1.2/conv2/Conv_output_0_vaip_32)",
+        "id": "C_17",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_190)@subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)@subgraph_(/layer1/layer1.2/conv3/Conv_output_0_vaip_35)",
+        "id": "C_18",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_191)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.1/Add_output_0_vaip_183)",
+        "id": "C_19",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_186)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+        "id": "C_20",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)"
+      },
+      {
+        "from_port_id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer1/layer1.2/Add_output_0_vaip_192)",
+        "id": "C_21",
+        "properties": [],
+        "to_port_id": "(/layer1/layer1.2/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_200)@subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)@subgraph_(/layer2/layer2.0/conv1/Conv_output_0_vaip_38)",
+        "id": "C_22",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_196)@subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)@subgraph_(/layer2/layer2.0/conv2/Conv_output_0_vaip_41)",
+        "id": "C_23",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_198)@subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)@subgraph_(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_vaip_47)",
+        "id": "C_24",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_201)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)@subgraph_(/layer2/layer2.0/conv3/Conv_output_0_vaip_44)",
+        "id": "C_25",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_199)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+        "id": "C_26",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)@subgraph_(/layer2/layer2.1/conv1/Conv_output_0_vaip_50)",
+        "id": "C_27",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_207)@subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)@subgraph_(/layer2/layer2.1/conv2/Conv_output_0_vaip_53)",
+        "id": "C_28",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_209)@subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.0/Add_output_0_vaip_202)",
+        "id": "C_29",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_205)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)@subgraph_(/layer2/layer2.1/conv3/Conv_output_0_vaip_56)",
+        "id": "C_30",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_210)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+        "id": "C_31",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)@subgraph_(/layer2/layer2.2/conv1/Conv_output_0_vaip_59)",
+        "id": "C_32",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_216)@subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)@subgraph_(/layer2/layer2.2/conv2/Conv_output_0_vaip_62)",
+        "id": "C_33",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_218)@subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)@subgraph_(/layer2/layer2.2/conv3/Conv_output_0_vaip_65)",
+        "id": "C_34",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_219)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.1/Add_output_0_vaip_211)",
+        "id": "C_35",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_214)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+        "id": "C_36",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)@subgraph_(/layer2/layer2.3/conv1/Conv_output_0_vaip_68)",
+        "id": "C_37",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_225)@subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)@subgraph_(/layer2/layer2.3/conv2/Conv_output_0_vaip_71)",
+        "id": "C_38",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_227)@subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.2/Add_output_0_vaip_220)",
+        "id": "C_39",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_223)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)@subgraph_(/layer2/layer2.3/conv3/Conv_output_0_vaip_74)",
+        "id": "C_40",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_228)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+        "id": "C_41",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)"
+      },
+      {
+        "from_port_id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer2/layer2.3/Add_output_0_vaip_229)",
+        "id": "C_42",
+        "properties": [],
+        "to_port_id": "(/layer2/layer2.3/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_237)@subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)@subgraph_(/layer3/layer3.0/conv1/Conv_output_0_vaip_77)",
+        "id": "C_43",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_233)@subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)@subgraph_(/layer3/layer3.0/conv2/Conv_output_0_vaip_80)",
+        "id": "C_44",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_235)@subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)@subgraph_(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_vaip_86)",
+        "id": "C_45",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_238)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)@subgraph_(/layer3/layer3.0/conv3/Conv_output_0_vaip_83)",
+        "id": "C_46",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_236)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+        "id": "C_47",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)@subgraph_(/layer3/layer3.1/conv1/Conv_output_0_vaip_89)",
+        "id": "C_48",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_244)@subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)@subgraph_(/layer3/layer3.1/conv2/Conv_output_0_vaip_92)",
+        "id": "C_49",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_246)@subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.0/Add_output_0_vaip_239)",
+        "id": "C_50",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_242)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)@subgraph_(/layer3/layer3.1/conv3/Conv_output_0_vaip_95)",
+        "id": "C_51",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_247)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+        "id": "C_52",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)@subgraph_(/layer3/layer3.2/conv1/Conv_output_0_vaip_98)",
+        "id": "C_53",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_253)@subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)@subgraph_(/layer3/layer3.2/conv2/Conv_output_0_vaip_101)",
+        "id": "C_54",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_255)@subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.1/Add_output_0_vaip_248)",
+        "id": "C_55",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_251)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)@subgraph_(/layer3/layer3.2/conv3/Conv_output_0_vaip_104)",
+        "id": "C_56",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_256)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+        "id": "C_57",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)@subgraph_(/layer3/layer3.3/conv1/Conv_output_0_vaip_107)",
+        "id": "C_58",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.3/relu/Relu_output_0_DequantizeLinear_Output_vaip_262)@subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)@subgraph_(/layer3/layer3.3/conv2/Conv_output_0_vaip_110)",
+        "id": "C_59",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.3/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_264)@subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.2/Add_output_0_vaip_257)",
+        "id": "C_60",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_260)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)@subgraph_(/layer3/layer3.3/conv3/Conv_output_0_vaip_113)",
+        "id": "C_61",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.3/conv3/Conv_output_0_DequantizeLinear_Output_vaip_265)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+        "id": "C_62",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)@subgraph_(/layer3/layer3.4/conv1/Conv_output_0_vaip_116)",
+        "id": "C_63",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.4/relu/Relu_output_0_DequantizeLinear_Output_vaip_271)@subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)@subgraph_(/layer3/layer3.4/conv2/Conv_output_0_vaip_119)",
+        "id": "C_64",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.4/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_273)@subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.3/Add_output_0_vaip_266)",
+        "id": "C_65",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.3/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_269)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)@subgraph_(/layer3/layer3.4/conv3/Conv_output_0_vaip_122)",
+        "id": "C_66",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.4/conv3/Conv_output_0_DequantizeLinear_Output_vaip_274)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+        "id": "C_67",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)@subgraph_(/layer3/layer3.5/conv1/Conv_output_0_vaip_125)",
+        "id": "C_68",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.5/relu/Relu_output_0_DequantizeLinear_Output_vaip_280)@subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)@subgraph_(/layer3/layer3.5/conv2/Conv_output_0_vaip_128)",
+        "id": "C_69",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.5/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_282)@subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.4/Add_output_0_vaip_275)",
+        "id": "C_70",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.4/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_278)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)@subgraph_(/layer3/layer3.5/conv3/Conv_output_0_vaip_131)",
+        "id": "C_71",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.5/conv3/Conv_output_0_DequantizeLinear_Output_vaip_283)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+        "id": "C_72",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)"
+      },
+      {
+        "from_port_id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer3/layer3.5/Add_output_0_vaip_284)",
+        "id": "C_73",
+        "properties": [],
+        "to_port_id": "(/layer3/layer3.5/relu_2/Relu_output_0_DequantizeLinear_Output/duplicated_vaip_292)@subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)@subgraph_(/layer4/layer4.0/conv1/Conv_output_0_vaip_134)",
+        "id": "C_74",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/relu/Relu_output_0_DequantizeLinear_Output_vaip_288)@subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)@subgraph_(/layer4/layer4.0/conv2/Conv_output_0_vaip_137)",
+        "id": "C_75",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_290)@subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)@subgraph_(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_vaip_143)",
+        "id": "C_76",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/downsample/downsample.0/Conv_output_0_DequantizeLinear_Output_vaip_293)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)@subgraph_(/layer4/layer4.0/conv3/Conv_output_0_vaip_140)",
+        "id": "C_77",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/conv3/Conv_output_0_DequantizeLinear_Output_vaip_291)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+        "id": "C_78",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)@subgraph_(/layer4/layer4.1/conv1/Conv_output_0_vaip_146)",
+        "id": "C_79",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.1/relu/Relu_output_0_DequantizeLinear_Output_vaip_299)@subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)@subgraph_(/layer4/layer4.1/conv2/Conv_output_0_vaip_149)",
+        "id": "C_80",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.1/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_301)@subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.0/Add_output_0_vaip_294)",
+        "id": "C_81",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.0/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_297)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)@subgraph_(/layer4/layer4.1/conv3/Conv_output_0_vaip_152)",
+        "id": "C_82",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.1/conv3/Conv_output_0_DequantizeLinear_Output_vaip_302)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+        "id": "C_83",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)@subgraph_(/layer4/layer4.2/conv1/Conv_output_0_vaip_155)",
+        "id": "C_84",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.2/relu/Relu_output_0_DequantizeLinear_Output_vaip_308)@subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)@subgraph_(/layer4/layer4.2/conv2/Conv_output_0_vaip_158)",
+        "id": "C_85",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.2/relu_1/Relu_output_0_DequantizeLinear_Output_vaip_310)@subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)@subgraph_(/layer4/layer4.2/conv3/Conv_output_0_vaip_161)",
+        "id": "C_86",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.2/conv3/Conv_output_0_DequantizeLinear_Output_vaip_311)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.1/Add_output_0_vaip_303)",
+        "id": "C_87",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.1/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_306)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)"
+      },
+      {
+        "from_port_id": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)@subgraph_(/layer4/layer4.2/Add_output_0_vaip_312)",
+        "id": "C_88",
+        "properties": [],
+        "to_port_id": "(/layer4/layer4.2/relu_2/Relu_output_0_DequantizeLinear_Output_vaip_314)@subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)"
+      },
+      {
+        "from_port_id": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)@subgraph_(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)",
+        "id": "C_89",
+        "properties": [],
+        "to_port_id": "(/avgpool/GlobalAveragePool_output_0_DequantizeLinear_Output_vaip_317)@subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)"
+      },
+      {
+        "from_port_id": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3@subgraph_(fc.bias_DequantizeLinear_Output_vaip_424)",
+        "id": "C_90",
+        "properties": [],
+        "to_port_id": "(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped"
+      },
+      {
+        "from_port_id": "(output)_download_0@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped",
+        "id": "C_91",
+        "properties": [],
+        "to_port_id": "(output)_download_0@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0"
+      },
+      {
+        "from_port_id": "(output)@subgraph_(output_QuantizeLinear_Input)(TransferMatMulToConv2d)_inserted_fix_3_reshaped_download_0",
+        "id": "C_92",
+        "properties": [],
+        "to_port_id": "(output)@(output)_"
+      }
+    ],
+    "design": {
+      "name": "graph"
+    },
+    "operators": [
+      {
+        "id": "(input)",
+        "name": "(input)",
+        "operator_type": "data-fix",
+        "ports": [
+          {
+            "direction": "out",
+            "id": "(input_DequantizeLinear_Output)@(input)",
+            "name": "(input_DequantizeLinear_Output)",
+            "properties": []
+          }
+        ],
+        "processor": "cpu"
+      },
+      {
+        "id": "(output)_",
+        "name": "(output)_",
+        "operator_type": "fix2float",
+        "ports": [
+          {
+            "direction": "in",
+            "id": "(output)@(output)_",
+            "name": "(output)",
+            "properties": []
+          },
+          {
+            "direction": "out",
+            "id": "(output)_@(output)_",
+            "name": "(output)_",
+            "properties": []
+          }
+        ],
+        "processor": "cpu"
+      }
+    ],
+    "processors": [
+      {
+        "name": "cpu",
+        "properties": []
+      },
+      {
+        "name": "NPU",
+        "properties": []
+      }
+    ],
+    "schema_version": {
+      "major": "0",
+      "minor": "0",
+      "patch": "0"
+    }
+  }
+}
