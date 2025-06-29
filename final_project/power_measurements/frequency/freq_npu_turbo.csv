@@ -1,0 +1,47 @@
+AMDPROFILER POWER PROFILE REPORT
+
+AMDuProfCLI.exe Version 5.1.576.0,
+
+PROFILE DETAILS
+CPU Details:,Family(0x1a) Model(0x24)
+Sampling Interval:,1000 milli-seconds
+Profile Start Time:,Jun-29-2025_19-35-34,
+Profile Duration:,10 seconds
+
+PROFILED COUNTERS
+COUNTER ID,NAME,CATEGORY,UNIT,DESCRIPTION
+0.,thread0-core-effective-frequency,Frequency,MHz,Thread0-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+2.,thread1-core-effective-frequency,Frequency,MHz,Thread1-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+4.,thread2-core-effective-frequency,Frequency,MHz,Thread2-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+6.,thread3-core-effective-frequency,Frequency,MHz,Thread3-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+8.,thread4-core-effective-frequency,Frequency,MHz,Thread4-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+10.,thread5-core-effective-frequency,Frequency,MHz,Thread5-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+12.,thread6-core-effective-frequency,Frequency,MHz,Thread6-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+14.,thread7-core-effective-frequency,Frequency,MHz,Thread7-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+16.,thread8-core-effective-frequency,Frequency,MHz,Thread8-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+18.,thread9-core-effective-frequency,Frequency,MHz,Thread9-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+20.,thread10-core-effective-frequency,Frequency,MHz,Thread10-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+22.,thread11-core-effective-frequency,Frequency,MHz,Thread11-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+24.,thread12-core-effective-frequency,Frequency,MHz,Thread12-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+26.,thread13-core-effective-frequency,Frequency,MHz,Thread13-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+28.,thread14-core-effective-frequency,Frequency,MHz,Thread14-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+30.,thread15-core-effective-frequency,Frequency,MHz,Thread15-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+32.,thread16-core-effective-frequency,Frequency,MHz,Thread16-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+34.,thread17-core-effective-frequency,Frequency,MHz,Thread17-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+36.,thread18-core-effective-frequency,Frequency,MHz,Thread18-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+38.,thread19-core-effective-frequency,Frequency,MHz,Thread19-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+40.,thread20-core-effective-frequency,Frequency,MHz,Thread20-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+42.,thread21-core-effective-frequency,Frequency,MHz,Thread21-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+44.,thread22-core-effective-frequency,Frequency,MHz,Thread22-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+46.,thread23-core-effective-frequency,Frequency,MHz,Thread23-Average CPU Core Frequency (Core Effective Frequency) for the sampling period in MHz. The core can go into various P-States within the sampling period with its own frequency.
+
+PROFILE RECORDS
+RecordId,Timestamp,thread0-core-effective-frequency,thread1-core-effective-frequency,thread2-core-effective-frequency,thread3-core-effective-frequency,thread4-core-effective-frequency,thread5-core-effective-frequency,thread6-core-effective-frequency,thread7-core-effective-frequency,thread8-core-effective-frequency,thread9-core-effective-frequency,thread10-core-effective-frequency,thread11-core-effective-frequency,thread12-core-effective-frequency,thread13-core-effective-frequency,thread14-core-effective-frequency,thread15-core-effective-frequency,thread16-core-effective-frequency,thread17-core-effective-frequency,thread18-core-effective-frequency,thread19-core-effective-frequency,thread20-core-effective-frequency,thread21-core-effective-frequency,thread22-core-effective-frequency,thread23-core-effective-frequency
+1,19:35:35:667, 3253.11, 3511.21, 1490.18, 2018.73, 2621.65, 2068.14, 4423.89, 4302.29, 3297.22, 3297.91, 2627.20, 2407.71, 3298.60, 3298.56, 3297.62, 3298.59, 3294.80, 3297.83, 2535.28, 2537.11, 3283.03, 3286.62, 3254.62, 3250.62
+2,19:35:36:669, 2557.22, 2765.73, 1683.28, 1659.81, 1989.21, 2422.51, 4117.07, 4113.27, 3279.39, 3283.30, 2684.90, 2475.62, 3294.41, 3296.04, 3287.92, 3291.00, 3285.54, 3285.82, 2732.45, 2718.72, 3282.51, 3286.14, 3277.89, 3277.18
+3,19:35:37:678, 2543.91, 1808.68, 1414.08, 1417.31, 1405.70, 1416.34, 4098.66, 4115.35, 3293.71, 3293.69, 2688.37, 2384.31, 3294.14, 3295.18, 3293.20, 3292.50, 3285.52, 3288.75, 2481.54, 2410.64, 3289.83, 3290.67, 3225.17, 3249.91
+4,19:35:38:682, 2859.81, 2514.13, 1391.67, 1391.10, 1395.80, 1400.41, 4074.83, 4111.69, 3295.84, 3295.78, 2520.66, 2190.20, 3294.17, 3294.34, 3293.35, 3293.46, 3295.51, 3295.58, 2306.45, 2633.77, 3284.03, 3288.03, 3203.00, 3216.18
+5,19:35:39:689, 1411.74, 1410.14, 1412.94, 1427.40, 1415.97, 1417.17, 4119.06, 4120.97, 3293.43, 3291.74, 2365.28, 2149.79, 3294.16, 3294.51, 3280.87, 3285.96, 3289.70, 3290.71, 2469.96, 2738.11, 3289.22, 3289.32, 3277.88, 3284.28
+6,19:35:40:694, 2454.85, 2472.38, 1393.72, 1403.28, 1391.11, 1389.83, 4118.32, 4127.18, 3275.31, 3280.50, 2102.13, 2036.72, 3292.80, 3290.55, 3292.19, 3293.51, 3283.79, 3287.96, 2361.77, 2165.35, 3294.62, 3294.49, 3265.53, 3275.61
+7,19:35:41:701, 2792.93, 2315.58, 1396.06, 1397.87, 1395.84, 1392.89, 4115.93, 4063.16, 3282.33, 3286.65, 2182.88, 1921.07, 3290.23, 3293.00, 3294.66, 3294.65, 3287.69, 3287.06, 2750.35, 2630.14, 3289.79, 3290.92, 3271.18, 3275.41
+8,19:35:42:707, 2902.51, 2141.09, 1405.26, 1420.02, 1414.55, 1416.30, 4116.89, 4124.86, 3285.04, 3288.67, 2397.16, 2015.69, 3292.76, 3292.55, 3294.56, 3294.53, 3289.15, 3282.67, 2649.88, 2444.51, 3290.61, 3293.43, 3274.89, 3278.50
