@@ -1,142 +1,96 @@
-# MLPerf Inference & Ryzen AI: Execution Guide
+# MLPerf Inference & Ryzen AI: Quick Start Guide
 
-This guide provides step-by-step instructions on how to use the provided scripts to quantize the ResNet50 model and run the MLPerf Inference benchmarks across various scenarios.
+### **1. Model Quantization (INT8)**
 
----
-
-### **1. Model Quantization Pipeline**
-
-The first step is to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model.
-
-The pipeline executes three main scripts in sequence:
-
-1.  **`export_fp32_resnet50.py`**: Exports a pre-trained ResNet50 model from the PyTorch library into the standard FP32 ONNX format. This is the baseline model for our pipeline.
-
-2.  **`prepare_calibration_data.py`**: Prepares the dataset required for quantization. It takes a small subset of raw JPEG images, applies the same preprocessing used during inference (resizing, cropping, normalization), and saves them as individual `.npy` files.
-
-3.  **`model_quantization.py`**: Performs the actual post-training quantization. It uses the FP32 ONNX model and the preprocessed calibration data to determine the optimal scaling factors for converting model weights and activations to INT8 precision.
-
-#### **How to Run the Pipeline**
-
-Place a small subset of ImageNet images (e.g., 300-500 images) in a dedicated directory for calibration. Then, execute the main pipeline script, pointing it to that directory.
+Generate the quantized INT8 ONNX ResNet50 model required for the benchmarks.
 
 **Command:**
 ```bash
-python pipeline_scripts/run_pipeline.py --image_dir <path_to_your_calibration_images>
+python pipeline_scripts/run_pipeline.py --image_dir <path_to_calibration_images>
 ```
-*Example:*
-```bash
-python pipeline_scripts/run_pipeline.py --image_dir dataset/imagenet_calib_subset
-```
-The final quantized model will be created at: `pipeline_scripts/quantized_models/resnet50_quant_int8.onnx`.
+The quantized model will be saved to: `pipeline_scripts/quantized_models/resnet50_quant_int8.onnx`.
 
 ---
 
-### **2. MLPerf Benchmark Scenarios**
+### **2. Running MLPerf Benchmarks**
 
-Once the model is ready, you can run the MLPerf benchmarks. Each scenario is designed to measure a different aspect of system performance and has its own script.
+#### **Offline**
+Measures the maximum system throughput using batch processing.
 
-#### **Offline Scenario**
+**Command:**
+```bash
+python inference-master/offline.py ^
+    --image_dir "dataset/ILSVRC2012_img_val" ^
+    --map_file "dataset/val_map.txt" ^
+    --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
+    --results_dir "inference-master/results/offline" ^
+    --run_performance ^
+    --run_accuracy ^
+    --npu
+```
 
-*   **What it does**: Measures the maximum possible throughput of the system. The benchmark provides all data samples to the System Under Test (SUT) at once, simulating a batch processing workload. This script can also be used to test the model's accuracy.
+#### **Single-Stream**
+Measures the latency of a single inference.
 
-*   **Command**:
-    ```bash
-    python inference-master/offline.py ^
-        --image_dir "dataset/ILSVRC2012_img_val" ^
-        --map_file "dataset/val_map.txt" ^
-        --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
-        --results_dir "inference-master/results/offline" ^
-        --run_performance ^
-        --run_accuracy ^
-        --npu
-    ```
+**Command:**
+```bash
+python inference-master/singlestream.py ^
+    --image_dir "dataset/ILSVRC2012_img_val" ^
+    --map_file "dataset/val_map.txt" ^
+    --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
+    --results_dir "inference-master/results/singleStream" ^
+    --npu
+```
 
-#### **Single-Stream Scenario**
+#### **Multi-Stream**
+Measures throughput with multiple concurrent inference streams.
 
-*   **What it does**: Measures the latency of a single inference. The benchmark sends one sample at a time and waits for the response before sending the next, simulating applications where immediate response time is critical.
+**Command:**
+```bash
+python inference-master/multistream.py ^
+    --image_dir "dataset/ILSVRC2012_img_val" ^
+    --map_file "dataset/val_map.txt" ^
+    --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
+    --results_dir "inference-master/results/multiStream" ^
+    --npu
+```
 
-*   **Command**:
-    ```bash
-    python inference-master/singlestream.py ^
-        --image_dir "dataset/ILSVRC2012_img_val" ^
-        --map_file "dataset/val_map.txt" ^
-        --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
-        --results_dir "inference-master/results/singleStream" ^
-        --npu
-    ```
+#### **Server**
+Simulates an online server and measures queries per second (QPS).
 
-#### **Multi-Stream Scenario**
-
-*   **What it does**: Measures the system's ability to handle multiple inference streams simultaneously. It aims to find the maximum throughput the system can sustain while ensuring all streams are processed.
-
-*   **Command**:
-    ```bash
-    python inference-master/multistream.py ^
-        --image_dir "dataset/ILSVRC2012_img_val" ^
-        --map_file "dataset/val_map.txt" ^
-        --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
-        --results_dir "inference-master/results/multiStream" ^
-        --npu
-    ```
-
-#### **Server Scenario**
-
-*   **What it does**: Simulates a real-world online service where inference requests arrive randomly according to a Poisson distribution. The goal is to measure the Queries Per Second (QPS) the system can handle while keeping latency below a specific threshold.
-
-*   **Command**:
-    ```bash
-    python inference-master/server.py ^
-        --image_dir "dataset/ILSVRC2012_img_val" ^
-        --map_file "dataset/val_map.txt" ^
-        --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
-        --results_dir "inference-master/results/server" ^
-        --target_qps 100 ^
-        --npu
-    ```
+**Command:**
+```bash
+python inference-master/server.py ^
+    --image_dir "dataset/ILSVRC2012_img_val" ^
+    --map_file "dataset/val_map.txt" ^
+    --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" ^
+    --results_dir "inference-master/results/server" ^
+    --target_qps 100 ^
+    --npu
+```
 
 ---
 
 ### **3. NPU Monitoring**
 
-The `monitor_npu.py` script allows you to observe the NPU's status and utilization in real-time while a benchmark is running. It uses the `xrt-smi.exe` command-line tool, which is part of the Ryzen AI software stack.
+Monitor NPU utilization in real-time while the benchmarks are running.
 
-#### **Configuration (Required)**
+**Configuration (Required):**
+Edit the `monitor_scripts/monitor_npu.py` script and set the correct path to `xrt-smi.exe` in the `XRT_SMI_PATH` variable.
 
-Before running the script, you **must** edit it to provide the correct path to `xrt-smi.exe` on your system.
-
-1.  Open the file `monitor_scripts/monitor_npu.py`.
-2.  Find the `XRT_SMI_PATH` variable and replace the placeholder path with your actual path.
-
-#### **How to Run the Monitor**
-
-Open a new, separate terminal and run the following command. The monitor will display updated NPU statistics on the screen and save a detailed log to a file.
-
-*   **Command**:
-    ```bash
-    python monitor_scripts/monitor_npu.py --interval 5 --log-file npu_monitor.log
-    ```
-    *   `--interval 5`: Refreshes the NPU status every 5 seconds.
-    *   `--log-file`: Saves all historical data to `npu_monitor.log`.
- 
-## 4. Configuring NPU Performance Mode
-
-To achieve optimal and consistent results during benchmarking, it is highly recommended to configure the Neural Processing Unit (NPU) to its highest performance setting. This ensures the hardware operates at maximum capability, though it may result in higher power consumption.
-
-This configuration is managed using the `xrt-smi.exe` command-line utility, which is part of the Ryzen AI software stack.
-
-### Available Modes
-
-The NPU can be set to several performance modes, each offering a different balance between performance and power efficiency:
-
-*   **performance** / **turbo**: Optimized for maximum throughput and the lowest possible latency. These modes are ideal for running benchmarks.
-*   **balanced**: Provides a compromise between strong performance and moderate power consumption, suitable for everyday use.
-*   **default**: The standard factory setting for the NPU.
-
-### How to Change the Performance Mode
-
-Before launching any benchmark scripts, open a terminal (preferably with administrator privileges) and use the following command structure.
-
-**Command Syntax:**
+**Command (in a separate terminal):**
 ```bash
-"<path_to_xrt-smi>\\xrt-smi.exe" configure --pmode <mode_name>
+python monitor_scripts/monitor_npu.py --interval 5 --log-file npu_monitor.log
+```
+
+---
+
+### **4. Configuring NPU Performance Mode**
+
+For optimal and consistent results, set the NPU to its highest performance mode before running any benchmarks.
+
+**Command:**
+```bash
+"<path_to_xrt-smi>\\xrt-smi.exe" configure --pmode performance
+```
+*Available modes include: `performance`, `turbo`, `balanced`, `default`.*
