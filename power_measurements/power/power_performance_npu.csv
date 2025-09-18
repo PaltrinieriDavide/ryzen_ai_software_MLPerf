@@ -1,0 +1,37 @@
+AMDPROFILER POWER PROFILE REPORT
+
+AMDuProfCLI.exe Version 5.1.576.0,
+
+PROFILE DETAILS
+CPU Details:,Family(0x1a) Model(0x24)
+Sampling Interval:,1000 milli-seconds
+Profile Start Time:,Jun-21-2025_13-02-53,
+Profile Duration:,10 seconds
+
+PROFILED COUNTERS
+COUNTER ID,NAME,CATEGORY,UNIT,DESCRIPTION
+72.,socket0-package-power,Power,W,Socket0-Average Package Power reported in Watts.
+74.,core0-power,Power,W,Core0-Average Power reported in Watts.
+76.,core1-power,Power,W,Core1-Average Power reported in Watts.
+78.,core2-power,Power,W,Core2-Average Power reported in Watts.
+80.,core3-power,Power,W,Core3-Average Power reported in Watts.
+82.,core4-power,Power,W,Core4-Average Power reported in Watts.
+84.,core5-power,Power,W,Core5-Average Power reported in Watts.
+86.,core6-power,Power,W,Core6-Average Power reported in Watts.
+88.,core7-power,Power,W,Core7-Average Power reported in Watts.
+90.,core8-power,Power,W,Core8-Average Power reported in Watts.
+92.,core9-power,Power,W,Core9-Average Power reported in Watts.
+94.,core10-power,Power,W,Core10-Average Power reported in Watts.
+96.,core11-power,Power,W,Core11-Average Power reported in Watts.
+
+PROFILE RECORDS
+RecordId,Timestamp,socket0-package-power,core0-power,core1-power,core2-power,core3-power,core4-power,core5-power,core6-power,core7-power,core8-power,core9-power,core10-power,core11-power
+1,13:2:54:917,   45.64,    4.80,    4.76,    4.78,    4.72,    1.98,    2.10,    2.44,    2.45,    1.77,    2.29,    2.32,    2.37
+2,13:2:55:922,   45.50,    4.82,    4.68,    4.78,    4.81,    2.61,    2.04,    2.33,    2.26,    2.27,    1.89,    1.93,    2.32
+3,13:2:56:925,   44.68,    4.74,    4.69,    4.72,    4.64,    1.54,    2.34,    2.44,    2.51,    2.53,    1.96,    1.71,    2.19
+4,13:2:57:928,   44.44,    4.77,    4.69,    4.70,    4.61,    1.39,    1.88,    2.52,    2.46,    2.53,    2.48,    2.15,    1.66
+5,13:2:58:937,   44.38,    4.70,    4.69,    4.62,    4.66,    1.51,    1.94,    2.25,    2.33,    2.46,    2.57,    2.43,    1.72
+6,13:2:59:940,   44.76,    4.70,    4.63,    4.71,    4.67,    1.59,    1.83,    2.23,    2.21,    2.30,    2.26,    2.55,    2.36
+7,13:3:0:941,   44.61,    4.74,    4.65,    4.66,    4.71,    1.82,    1.86,    2.37,    2.45,    1.88,    2.45,    2.22,    2.27
+8,13:3:1:945,   44.41,    4.70,    4.70,    4.70,    4.73,    1.61,    2.13,    2.45,    2.14,    2.16,    2.29,    2.05,    2.21
+9,13:3:2:944,   44.57,    4.68,    4.74,    4.69,    4.73,    1.96,    1.96,    2.56,    2.38,    2.10,    2.48,    1.81,    1.92

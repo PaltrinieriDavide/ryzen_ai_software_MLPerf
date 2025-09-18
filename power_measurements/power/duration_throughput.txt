@@ -1,0 +1,21 @@
+With 5k images
+
+Balanced mode:
+Duration: 46.77 seconds
+Throughput: 117.61 samples/second
+
+powersaver mode:
+Duration: 74.44 seconds
+Throughput: 73.89 samples/second
+
+turbo, default, performance: around
+Duration: 35.19 seconds
+Throughput: 156.28 samples/second
+
+only cpu:
+Duration: 172.74 seconds
+Throughput: 31.84 samples/second
+
+only gpu:
+Duration: 65.77 seconds
+Throughput: 83.62 samples/second
