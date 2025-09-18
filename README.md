@@ -118,3 +118,25 @@ Open a new, separate terminal and run the following command. The monitor will di
     ```
     *   `--interval 5`: Refreshes the NPU status every 5 seconds.
     *   `--log-file`: Saves all historical data to `npu_monitor.log`.
+ 
+## 4. Configuring NPU Performance Mode
+
+To achieve optimal and consistent results during benchmarking, it is highly recommended to configure the Neural Processing Unit (NPU) to its highest performance setting. This ensures the hardware operates at maximum capability, though it may result in higher power consumption.
+
+This configuration is managed using the `xrt-smi.exe` command-line utility, which is part of the Ryzen AI software stack.
+
+### Available Modes
+
+The NPU can be set to several performance modes, each offering a different balance between performance and power efficiency:
+
+*   **performance** / **turbo**: Optimized for maximum throughput and the lowest possible latency. These modes are ideal for running benchmarks.
+*   **balanced**: Provides a compromise between strong performance and moderate power consumption, suitable for everyday use.
+*   **default**: The standard factory setting for the NPU.
+
+### How to Change the Performance Mode
+
+Before launching any benchmark scripts, open a terminal (preferably with administrator privileges) and use the following command structure.
+
+**Command Syntax:**
+```bash
+"<path_to_xrt-smi>\\xrt-smi.exe" configure --pmode <mode_name>
