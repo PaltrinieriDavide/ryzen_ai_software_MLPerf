@@ -80,7 +80,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     python inference-master/singlestream.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
-        --results_dir "inference-master/results/singleStream" `
+        --results_dir "inference-master/results/singlestream" `
         --num_images 10000 `
         --npu
     ```
@@ -94,7 +94,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     python inference-master/multistream.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
-        --results_dir "inference-master/results/multiStream" `
+        --results_dir "inference-master/results/multistream" `
         --num_images 10000 `
         --npu
     ```
@@ -189,9 +189,9 @@ $env:PATH = "C:\Program Files\AMD\AMDuProf\bin;" + $env:PATH
 Then execute the command 
 
 ```bash
-AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_measurements/power_profiling"
+AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_logs/power_profiling"
 ```
 
-Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_measurements/power_profiling" directory
+Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_logs/power_profiling" directory
 To measure the frequency, just substitute "power" in the previous command with "frequency"
 

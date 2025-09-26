@@ -4,127 +4,140 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4604ebbb-9249-4d38-868d-4b023f4aae83" name="Changes" comment="added results folder and fixed xrt-smi relative path">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ryzen_ai_software_MLPerf.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/mlperf_log_summary_averaged.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_1/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_2/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_3/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_4/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/CPU/results_5/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/mlperf_log_summary_averaged.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_1/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_2/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_3/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_4/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/GPU/results_5/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/mlperf_log_summary_averaged.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_1/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_2/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_3/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_4/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_detail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_trace.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/performance.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/offline/NPU/results_5/performance_stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/100_target_qps/CPU/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/100_target_qps/GPU/gpu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/100_target_qps/NPU/mlperf_log_summary.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/20_target_qps/CPU/cpu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/20_target_qps/GPU/gpu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/20_target_qps/NPU/npu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/CPU/cpu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/CPU/cpu_server_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/GPU/gpu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/GPU/gpu_server_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server_3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/CPU/cpu_singlestream.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/CPU/cpu_singlestream_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/GPU/gpu_singlestream.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/GPU/gpu_singlestream_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream_3.txt" afterDir="false" />
+    <list default="true" id="4604ebbb-9249-4d38-868d-4b023f4aae83" name="Changes" comment="structure readjustment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor_scripts/monitor_npu.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor_scripts/monitor_npu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/Results.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/Overall_Results.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_cpu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_cpu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_gpu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_gpu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_npu_balanced.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_npu_balanced.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_npu_default.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_npu_default.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_npu_performance.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_npu_performance.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_npu_powersaver.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_npu_powersaver.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/frequency/freq_npu_turbo.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/frequency/freq_npu_turbo.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/duration_throughput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/duration_throughput.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/idle.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/idle.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_balanced_longer_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_balanced_longer_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_balanced_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_balanced_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_cpu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_cpu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_default_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_default_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_gpu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_gpu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_performance_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_performance_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_powersaver_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_powersaver_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/power_measurements/power/power_turbo_npu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/power_measurements/power/power_turbo_npu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/mlperf_log_summary_averaged.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/mlperf_log_summary_averaged.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_1/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_1/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_2/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_2/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_3/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_3/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_4/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_4/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/CPU/results_5/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/CPU/results_5/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/mlperf_log_summary_averaged.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/mlperf_log_summary_averaged.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_1/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_1/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_2/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_2/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_3/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_3/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_4/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_4/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/GPU/results_5/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/GPU/results_5/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/mlperf_log_summary_averaged.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/mlperf_log_summary_averaged.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_1/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_1/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_2/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_2/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_3/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_3/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_4/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_4/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_accuracy.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/mlperf_log_accuracy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_detail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/mlperf_log_detail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/mlperf_log_trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/mlperf_log_trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/performance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/performance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/offline/NPU/results_5/performance_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/offline/NPU/results_5/performance_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/100_target_qps/CPU/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/100_target_qps/CPU/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/100_target_qps/GPU/gpu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/100_target_qps/GPU/gpu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/100_target_qps/NPU/mlperf_log_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/100_target_qps/NPU/mlperf_log_summary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/20_target_qps/CPU/cpu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/20_target_qps/CPU/cpu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/20_target_qps/GPU/gpu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/20_target_qps/GPU/gpu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/20_target_qps/NPU/npu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/20_target_qps/NPU/npu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/CPU/cpu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/CPU/cpu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/CPU/cpu_server_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/CPU/cpu_server_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/GPU/gpu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/GPU/gpu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/GPU/gpu_server_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/GPU/gpu_server_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/NPU/npu_server.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/NPU/npu_server_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/server/50_target_qps/NPU/npu_server_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/server/50_target_qps/NPU/npu_server_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/CPU/cpu_singlestream.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/CPU/cpu_singlestream.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/CPU/cpu_singlestream_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/CPU/cpu_singlestream_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/GPU/gpu_singlestream.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/GPU/gpu_singlestream.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/GPU/gpu_singlestream_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/GPU/gpu_singlestream_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/NPU/npu_singlestream.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/NPU/npu_singlestream_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/singlestream/NPU/npu_singlestream_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project_results/performance_measurements/singlestream/NPU/npu_singlestream_3.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,23 +186,23 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "final__project",
-    "last_opened_file_path": "C:/Users/Utente/UNI/POLIMI/PRIMO ANNO/ACA/ryzen_ai_software_MLPerf/final_project/MLPerf_submission/code/resnet50/RyzenAI_ResNet50_Fp32"
+    "last_opened_file_path": "C:/Users/Utente/UNI/POLIMI/PRIMO ANNO/ACA/ryzen_ai_software_MLPerf/project_results/power_measurements"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\project_results\power_measurements" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\MLPerf_submission\code\resnet50\RyzenAI_ResNet50_Fp32" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\inference-master\results\singlestream" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\inference-master\results\server" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\inference-master\results\offline" />
-      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\power_measurements\frequency" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\project_results\performance_measurements" />
+      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\inference-master" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\previous_submission_stuff" />
       <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project" />
-      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\final_project\inference-master\results\server\20_target_qps" />
-      <recent name="C:\Users\Utente\UNI\POLIMI\PRIMO ANNO\ACA\ryzen_ai_software_MLPerf\bf16_stuff" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -320,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758905745343</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="workspace file">
+      <option name="closed" value="true" />
+      <created>1758906013937</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1758906013937</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,6 +366,8 @@
     <MESSAGE value="moved in dataset folder with only mapping file" />
     <MESSAGE value="updated structure" />
     <MESSAGE value="added results folder and fixed xrt-smi relative path" />
-    <option name="LAST_COMMIT_MESSAGE" value="added results folder and fixed xrt-smi relative path" />
+    <MESSAGE value="workspace file" />
+    <MESSAGE value="structure readjustment" />
+    <option name="LAST_COMMIT_MESSAGE" value="structure readjustment" />
   </component>
 </project>
