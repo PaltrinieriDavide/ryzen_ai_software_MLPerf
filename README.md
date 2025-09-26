@@ -68,6 +68,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/offline" `
         --num_images 10000 `
+        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 #### **Single-Stream Scenario**
@@ -81,6 +82,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/singleStream" `
         --num_images 10000 `
+        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -95,6 +97,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/multiStream" `
         --num_images 10000 `
+        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -110,6 +113,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --results_dir "inference-master/results/server" `
         --num_images 10000 `
         --target_qps 100 `
+        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -185,4 +189,5 @@ Then execute the command
 
 Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_measurements/power_profiling" directory
 To measure the frequency, just substitute "power" in the previous command with "frequency"
+
 
