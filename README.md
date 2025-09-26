@@ -149,49 +149,50 @@ We've used AMD uProf (https://www.amd.com/en/developer/uprof.html) to measure so
 
 To change the NPU power operating mode, you can use xrt-smi, first adding to the environment variables the path of the ryzen ai installation directory:
 
-    ```powershell
-    $env:PATH = "<PATH-TO-RYZEN-AI-INSTALL-DIR>;" + $env:PATH
-    ```
+```powershell
+$env:PATH = "<PATH-TO-RYZEN-AI-INSTALL-DIR>;" + $env:PATH
+```
 *Example:*
 
-    ```powershell
-    $env:PATH = "C:\Users\aiene\Downloads\NPU_RAI1.5_280_WHQL\npu_mcdm_stack_prod;" + $env:PATH
-    ```
+```powershell
+$env:PATH = "C:\Users\aiene\Downloads\NPU_RAI1.5_280_WHQL\npu_mcdm_stack_prod;" + $env:PATH
+```
 
 And then executing the following command, selecting one of the power modes:
 
-    ```bash
-    xrt-smi configure --pmode <default | powersaver | balanced | performance | turbo>
-    ```
+```bash
+xrt-smi configure --pmode <default | powersaver | balanced | performance | turbo>
+```
 
 *Example:*
 
-    ```bash
-    xrt-smi configure --pmode performance
-    ```
+```bash
+xrt-smi configure --pmode performance
+```
 
 #### **How to Run the live profiler**
 
 First you need to add the AMDuProfCLI exe file path to the environment variables
 
-    ```powershell
-    $env:PATH = "<PATH-TO-AMDuProf-bin-FOLDER>;" + $env:PATH
-    ```
+```powershell
+$env:PATH = "<PATH-TO-AMDuProf-bin-FOLDER>;" + $env:PATH
+```
 
 *Example:*
 
-    ```powershell
-    $env:PATH = "C:\Program Files\AMD\AMDuProf\bin;" + $env:PATH
-    ```
+```powershell
+$env:PATH = "C:\Program Files\AMD\AMDuProf\bin;" + $env:PATH
+```
 
 Then execute the command 
 
-    ```bash
-    AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_measurements/power_profiling"
-    ```
+```bash
+AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_measurements/power_profiling"
+```
 
 Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_measurements/power_profiling" directory
 To measure the frequency, just substitute "power" in the previous command with "frequency"
+
 
 
 
