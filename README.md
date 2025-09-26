@@ -195,3 +195,6 @@ AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_l
 Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_logs/power_profiling" directory
 To measure the frequency, just substitute "power" in the previous command with "frequency"
 
+### **6. Project results**
+
+The measurements used to derive our conclusions are in the project_results/ folder
