@@ -24,7 +24,7 @@ CONFIG = {
 def update_paths():
     """Aggiorna i percorsi dei modelli basati sulla configurazione."""
     CONFIG["fp32_model_path"] = os.path.join(CONFIG["model_dir"], f"{CONFIG['base_model_name']}_fp32.onnx")
-    CONFIG["quantized_model_path"] = os.path.join(CONFIG["quantized_model_dir"], f"{CONFIG['base_model_name']}_quant_{CONFIG['quant_mode']}.onnx")
+    CONFIG["quantized_model_path"] = os.path.join(CONFIG["quantized_model_dir"], f"{CONFIG['base_model_name']}_quant_{CONFIG['quant_mode']}_new.onnx")
 
 def setup_logging():
     """Configura il logging su file e console."""
