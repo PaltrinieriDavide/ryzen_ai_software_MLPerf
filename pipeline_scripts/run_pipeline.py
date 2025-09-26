@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 import logging
-import argparse # NUOVO: Aggiunto per gestire gli argomenti della riga di comando
+import argparse
 from datetime import datetime
 
 # --- Configuration ---
@@ -140,4 +140,5 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
+
     main()
