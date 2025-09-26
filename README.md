@@ -11,11 +11,12 @@ ILSVRC2012 can be downloaded from the [ImageNet web page](https://www.image-net.
 
 Since the focus of this project is performance only, not accuracy, ground-truth labels are not required. The model predictions will be ignored during benchmarking, and the evaluation will only consider throughput and latency metrics.
 
-In order to proceed with the quantization step (Step 2), we need a calibration dataset, which can be created by directly selecting a small subset (300–500 images) from ILSVRC2012. You can freely create the calibration dataset in the folder dataset/imagent_calib_subset.
+If you want to skip the quantization step (Step 2), we are providing the ready quantized model that we used in "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx"
+Otherwise, in order to proceed with the quantization, we need a calibration dataset, which can be created by directly selecting a small subset (300–500 images) from ILSVRC2012. You can freely create the calibration dataset in the folder dataset/imagent_calib_subset.
 
 ### **2. Model Quantization Pipeline**
 
-The first step is to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model. If you want to skip this step, we are providing the quantized model we used in "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx"
+The first step is to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model. 
 
 The pipeline executes three main scripts in sequence:
 
@@ -52,9 +53,9 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
 *   **Command**:
     ```bash
     python inference-master/offline.py `
-        --image_dir "dataset/ILSVRC2012_img_val" `
-        --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
-        --results_dir "inference-master/results/offline" `
+        --image_dir "<path_to_your_dataset>" `
+        --onnx_model_path "<path_to_your_quantized_model>" `
+        --results_dir "<path_where_to_print_inference_results>" `
         #select the number of images to be evaluated, default is all
         [--num_images 10000] `
         # Choose one of the following: --npu, --gpu, or --cpu
@@ -68,7 +69,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/offline" `
         --num_images 10000 `
-        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 #### **Single-Stream Scenario**
@@ -82,7 +82,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/singleStream" `
         --num_images 10000 `
-        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -97,7 +96,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/multiStream" `
         --num_images 10000 `
-        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -113,7 +111,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
         --results_dir "inference-master/results/server" `
         --num_images 10000 `
         --target_qps 100 `
-        # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
 
@@ -125,29 +122,7 @@ The `monitor_npu.py` script allows you to observe the NPU's status and utilizati
 
 #### **Configuration (Required)**
 
-Before running the script, you **must** edit it to provide the correct path to `xrt-smi.exe` on your system.
-
-1.  Open the file `monitor_scripts/monitor_npu.py`.
-2.  Find the `XRT_SMI_PATH` variable and replace the placeholder path with your actual path.
-
-#### **How to Run the Monitor**
-
-Open a new, separate terminal and run the following command. The monitor will display updated NPU statistics on the screen and save a detailed log to a file.
-
-*   **Command**:
-    ```bash
-    python monitor_scripts/monitor_npu.py --interval 5 --log-file npu_monitor.log
-    ```
-    *   `--interval 5`: Refreshes the NPU status every 5 seconds.
-    *   `--log-file`: Saves all historical data to `npu_monitor.log`.
-
-### **5. Power profiling**
-
-We've used AMD uProf (https://www.amd.com/en/developer/uprof.html) to measure socket and cores power.
-
-#### **NPU power mode selection (Optional)**
-
-To change the NPU power operating mode, you can use xrt-smi, first adding to the environment variables the path of the ryzen ai installation directory:
+Before running the script, you **must** add the absolute path of the folder containing `xrt-smi.exe` to the PATH environment variable:
 
 ```powershell
 $env:PATH = "<PATH-TO-RYZEN-AI-INSTALL-DIR>;" + $env:PATH
@@ -158,12 +133,40 @@ $env:PATH = "<PATH-TO-RYZEN-AI-INSTALL-DIR>;" + $env:PATH
 $env:PATH = "C:\Users\aiene\Downloads\NPU_RAI1.5_280_WHQL\npu_mcdm_stack_prod;" + $env:PATH
 ```
 
+If you prefer, you can also directly insert the `xrt-smi.exe` absolute path in the XRT_SMI_PATH variable in the code of monitor_scripts/monitor_npu.py at line 13.
+
+#### **How to Run the Monitor**
+
+Run the following command in a terminal. The monitor will display updated NPU statistics on the screen and save a detailed log to a file.
+
+*   **Command**:
+```bash
+python monitor_scripts/monitor_npu.py --interval 5 --log-file npu_monitor.log
+```
+*   `--interval 5`: Refreshes the NPU status every 5 seconds.
+*   `--log-file`: Saves all historical data to `npu_monitor.log`.
+
+### **5. Power profiling**
+
+We've used AMD uProf (https://www.amd.com/en/developer/uprof.html) to measure socket and cores power.
+
+#### **NPU power mode selection (Optional)**
+
+To change the NPU power operating mode, you can use xrt-smi, first adding to the PATH environment variable the absolute path of the folder containing `xrt-smi.exe` (Ryzen AI installation directory):
+
+```powershell
+$env:PATH = "<PATH-TO-RYZEN-AI-INSTALL-DIR>;" + $env:PATH
+```
+*Example:*
+
+```powershell
+$env:PATH = "C:\Users\aiene\Downloads\NPU_RAI1.5_280_WHQL\npu_mcdm_stack_prod;" + $env:PATH
+```
 And then executing the following command, selecting one of the power modes:
 
 ```bash
 xrt-smi configure --pmode <default | powersaver | balanced | performance | turbo>
 ```
-
 *Example:*
 
 ```bash
@@ -172,7 +175,7 @@ xrt-smi configure --pmode performance
 
 #### **How to Run the live profiler**
 
-First you need to add the AMDuProfCLI exe file path to the environment variables
+First you need to add the AMDuProfCLI exe file path to the PATH environment variable:
 
 ```powershell
 $env:PATH = "<PATH-TO-AMDuProf-bin-FOLDER>;" + $env:PATH
@@ -183,7 +186,6 @@ $env:PATH = "<PATH-TO-AMDuProf-bin-FOLDER>;" + $env:PATH
 ```powershell
 $env:PATH = "C:\Program Files\AMD\AMDuProf\bin;" + $env:PATH
 ```
-
 Then execute the command 
 
 ```bash
@@ -192,8 +194,4 @@ AMDuProfCLI.exe timechart --event power --interval 100 --duration 10 -o "power_m
 
 Which prints the detailed power outputs, measured every 100 ms (interval), for 10 seconds (duration), in the file "timechart.csv" in the "power_measurements/power_profiling" directory
 To measure the frequency, just substitute "power" in the previous command with "frequency"
-
-
-
-
 

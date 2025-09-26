@@ -1,0 +1,21 @@
+===== PERFORMANCE RESULTS =====
+
+Scenario: Offline
+Total samples processed: 22000
+Test duration: 258.48 seconds
+Throughput: 85.11 samples/second
+
+===== LATENCY (ms) =====
+Mean: 11.55
+Median: 11.51
+Min: 9.79
+Max: 72.55
+90th percentile: 12.51
+95th percentile: 13.00
+99th percentile: 14.00
+
+===== BATCH PROCESSING TIME (ms) =====
+Mean: 11.55
+Median: 11.51
+Min: 9.79
+Max: 72.55

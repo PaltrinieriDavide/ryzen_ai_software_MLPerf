@@ -5,14 +5,19 @@ import time
 import argparse
 import logging
 from datetime import datetime
+import shutil
+
 
 class MonitorConfig:
     """Default settings for the NPU monitoring utility."""
-    #XRT_SMI_PATH = "xrt-smi.exe"
-    XRT_SMI_PATH = "C:\\Users\\aiene\\Downloads\\RAI_1.3.1_242_WHQL\\npu_mcdm_stack_prod\\xrt-smi.exe"
-    XRT_SMI_PATH = "C:\\Users\\aiene\Downloads\\NPU_RAI1.5_280_WHQL\\npu_mcdm_stack_prod\\xrt-smi.exe"
-#"C:\Windows\System32"
-    
+    # XRT_SMI_PATH = "C:\\Users\\aiene\Downloads\\NPU_RAI1.5_280_WHQL\\npu_mcdm_stack_prod\\xrt-smi.exe"
+    XRT_SMI_PATH = shutil.which("xrt-smi.exe")
+    if XRT_SMI_PATH is None:
+        raise FileNotFoundError(
+            "Error: 'xrt-smi.exe' not found in the system's PATH.\n"
+            "Please ensure that the Ryzen AI installation directory is added to your PATH environment variable."
+        )
+
     DEFAULT_INTERVAL_S = 5
     DEFAULT_LOG_FILE = "npu_monitor.log"
     DEFAULT_DEVICE_BDF = ""  # Empty string targets all detected devices.
@@ -21,6 +26,7 @@ class MonitorConfig:
     REPORTS = {
         "all": True,
     }
+
 
 class NpuMonitor:
     """A utility to monitor AMD Ryzen AI NPU status using xrtsmi."""
@@ -106,7 +112,7 @@ class NpuMonitor:
         self.logger.info(f"Interval:      {self.args.interval}s")
         self.logger.info(f"Log File:      {self.args.log_file}")
         self.logger.info("Starting monitor... Press Ctrl+C to stop.")
-        
+
         try:
             time.sleep(2)
             while True:
@@ -117,7 +123,7 @@ class NpuMonitor:
                 for report, enabled in self.config.REPORTS.items():
                     if enabled:
                         self._run_report(report)
-                
+
                 self.logger.info(f"\nNext update in {self.args.interval} seconds...")
                 time.sleep(self.args.interval)
         except KeyboardInterrupt:
@@ -127,6 +133,7 @@ class NpuMonitor:
         finally:
             logging.shutdown()
             sys.exit(0)
+
 
 def main():
     """Parses arguments and starts the monitor."""
@@ -147,9 +154,10 @@ def main():
         help="Target device BDF (Bus:Device:Function). Monitors all if unspecified."
     )
     args = parser.parse_args()
-    
+
     monitor = NpuMonitor(MonitorConfig, args)
     monitor.run()
+
 
 if __name__ == "__main__":
     main()
