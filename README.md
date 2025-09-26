@@ -4,7 +4,16 @@ This guide provides step-by-step instructions on how to use the provided scripts
 
 ---
 
-### **1. Model Quantization Pipeline**
+### **1. Dataset**
+
+For this project we use the ILSVRC2012 (ImageNet) validation dataset, which is the standard benchmark dataset for ResNet50 in MLPerf.
+ILSVRC2012 can be downloaded from the [ImageNet web page](https://www.image-net.org/download.php)
+
+Since the focus of this project is performance only, not accuracy, ground-truth labels are not required. The model predictions will be ignored during benchmarking, and the evaluation will only consider throughput and latency metrics.
+
+In order to proceed with the quantization step (Step 2), we need a calibration dataset, which can be created by directly selecting a small subset (300–500 images) from ILSVRC2012. You can freely create the calibration dataset in the folder dataset/imagent_calib_subset.
+
+### **2. Model Quantization Pipeline**
 
 The first step is to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model. If you want to skip this step, we are providing the quantized model we used in "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx"
 
@@ -18,7 +27,7 @@ The pipeline executes three main scripts in sequence:
 
 #### **How to Run the Pipeline**
 
-Place a small subset of ImageNet images (e.g., 300-500 images) in a dedicated directory for calibration. Then, execute the main pipeline script, pointing it to that directory.
+Execute the main pipeline script, pointing it to the calibration dataset directory, created in the previous step.
 
 **Command:**
 ```bash
@@ -32,26 +41,22 @@ The final quantized model will be created at: `pipeline_scripts/quantized_models
 
 ---
 
-### **2. MLPerf Benchmark Scenarios**
+### **3. MLPerf Benchmark Scenarios**
 
 Once the model is ready, you can run the MLPerf benchmarks. Each scenario is designed to measure a different aspect of system performance and has its own script. The MLPerf generated result file will be called mlperf_log_summary.txt and placed in the results_dir folder.
 
 #### **Offline Scenario**
 
-*   **What it does**: Measures the maximum possible throughput of the system. The benchmark provides all data samples to the System Under Test (SUT) at once, simulating a batch processing workload. This script can also be used to test the model's accuracy.
+*   **What it does**: Measures the maximum possible throughput of the system. The benchmark provides all data samples to the System Under Test (SUT) at once, simulating a batch processing workload.
 
 *   **Command**:
     ```bash
     python inference-master/offline.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
-        --map_file "dataset/val_map.txt" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/offline" `
         #select the number of images to be evaluated, default is all
         [--num_images 10000] `
-        # You can use --run_performance, --run_accuracy, or both
-        --run_performance `
-        --run_accuracy `
         # Choose one of the following: --npu, --gpu, or --cpu
         --npu
     ```
@@ -60,11 +65,9 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     ```bash
     python inference-master/offline.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
-        --map_file "dataset/val_map.txt" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/offline" `
         --num_images 10000 `
-        --run_performance `
         --npu
     ```
 #### **Single-Stream Scenario**
@@ -75,7 +78,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     ```bash
     python inference-master/singlestream.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
-        --map_file "dataset/val_map.txt" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/singleStream" `
         --num_images 10000 `
@@ -90,7 +92,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     ```bash
     python inference-master/multistream.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
-        --map_file "dataset/val_map.txt" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/multiStream" `
         --num_images 10000 `
@@ -105,7 +106,6 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
     ```bash
     python inference-master/server.py `
         --image_dir "dataset/ILSVRC2012_img_val" `
-        --map_file "dataset/val_map.txt" `
         --onnx_model_path "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx" `
         --results_dir "inference-master/results/server" `
         --num_images 10000 `
@@ -115,7 +115,7 @@ Once the model is ready, you can run the MLPerf benchmarks. Each scenario is des
 
 ---
 
-### **3. NPU Monitoring**
+### **4. NPU Monitoring**
 
 The `monitor_npu.py` script allows you to observe the NPU's status and utilization in real-time while a benchmark is running. It uses the `xrt-smi.exe` command-line tool, which is part of the Ryzen AI software stack.
 
@@ -137,7 +137,7 @@ Open a new, separate terminal and run the following command. The monitor will di
     *   `--interval 5`: Refreshes the NPU status every 5 seconds.
     *   `--log-file`: Saves all historical data to `npu_monitor.log`.
 
-### **4. Power profiling**
+### **5. Power profiling**
 
 We've used AMD uProf (https://www.amd.com/en/developer/uprof.html) to measure socket and cores power.
 
