@@ -7,11 +7,9 @@ throughput of the system by providing all samples to the SUT at once.
 Example usage:
 python inference-master/offline.py `
     --image_dir "dataset/ILSVRC2012_img_val" `
-    --map_file "dataset/val_map.txt" `
     --onnx_model_path "pipeline_scripts\quantized_models\resnet50_quant_int8.onnx" `
     --results_dir "inference-master/results/offline" `
-    --num_images 10 `
-    --run_performance `
+    --num_images 10000 `
     --npu
 
 Note: The execution provider flag is required. 
@@ -33,7 +31,7 @@ import utils
 import numpy as np
 import onnxruntime as ort
 from PIL import Image
-from torchvision import transforms
+from torchvision import transforms # type: ignore
 
 from mlperf_loadgen import (
     TestSettings, TestScenario, TestMode,
@@ -52,10 +50,6 @@ class SUT:
     def __init__(self, onnx_model_path: Path, dataset: utils.ImagenetDataset, provider: str):
         log.info("Initializing SUT for Offline scenario...")
         self.dataset = dataset
-        self.ground_truth = {i: label for i, label in enumerate(dataset.labels)}
-        
-        # State and metrics are now instance variables
-        self.predictions: Dict[int, Dict[str, Any]] = {}
         self.total_samples_processed = 0
         self.start_time: float = 0.0
         self.end_time: float = 0.0
@@ -77,12 +71,8 @@ class SUT:
 
         responses = []
         for query in query_samples:
-            tensor, _ = self.dataset.get_sample(query.index)
-            output = self.session.run([self.output_name], {self.input_name: tensor})[0]
-            top1_pred = np.argmax(output, axis=1)[0]
-            
-            sample_idx = query.index
-            self.predictions[sample_idx] = {"top1": int(top1_pred)}
+            tensor = self.dataset.get_sample(query.index)
+            _ = self.session.run([self.output_name], {self.input_name: tensor})
             responses.append(QuerySampleResponse(query.id, 0, 0))
 
         self.end_time = time.time()
@@ -102,28 +92,6 @@ class SUT:
         self.start_time = 0.0
         self.end_time = 0.0
         log.info("SUT state has been reset.")
-
-    def get_accuracy(self) -> Dict[str, Any]:
-        """Calculates and returns a summary of accuracy metrics."""
-        if not self.predictions:
-            log.warning("No predictions available for accuracy calculation.")
-            return {"top1_accuracy": 0, "samples": 0}
-
-        top1_correct = 0
-        for idx, pred_data in self.predictions.items():
-            if self.ground_truth[idx] == pred_data.get("top1", -1):
-                top1_correct += 1
-        
-        top1_acc = top1_correct / len(self.predictions) * 100 if self.predictions else 0
-        
-        accuracy_results = {"top1_accuracy": top1_acc, "samples": len(self.predictions)}
-        
-        with open("accuracy.txt", "w") as f:
-            f.write(f"Top-1 Accuracy: {top1_acc:.2f}%\n")
-            f.write(f"Total samples: {len(self.predictions)}\n")
-        log.info(f"Accuracy results saved to accuracy.txt: {top1_acc:.2f}%")
-        
-        return accuracy_results
 
     def get_performance_stats(self) -> Dict[str, Any]:
         """Calculates and returns a summary of performance metrics."""
@@ -148,26 +116,8 @@ class SUT:
 
         return stats
 
-def setup_logging(log_dir: Path) -> None:
-    """Configures a logger to write to a file and the console."""
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = (log_dir / "benchmark.log").resolve()
-
-    logging.basicConfig(level=logging.INFO)
-    file_handler = logging.FileHandler(log_file, mode='w')
-    file_handler.setLevel(logging.DEBUG)
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter("[%(asctime)s] [%(levelname)-5.5s] %(message)s", datefmt='%Y-%m-%d %H:%M:%S')
-    file_handler.setFormatter(formatter)
-    console_handler.setFormatter(formatter)
-    log.addHandler(file_handler)
-    log.addHandler(console_handler)
-    log.propagate = False
-    log.info(f"Logging configured. Log file at: {log_file}")
-
 def run_test(sut_instance: SUT, dataset: utils.ImagenetDataset, settings: TestSettings):
-    """Orchestrates a single MLPerf test run (either accuracy or performance)."""
+    """Hand a single MLPerf test run (either accuracy or performance)."""
     sut_instance.reset()
     
     qsl = ConstructQSL(len(dataset), min(len(dataset), 1024), dataset.load_samples, dataset.unload_samples)
@@ -197,28 +147,29 @@ def main(args: argparse.Namespace) -> None:
             selected_provider = "DmlExecutionProvider"
         elif args.cpu:
             selected_provider = "CPUExecutionProvider"
-        
-        if not selected_provider:
+        else:
             log.error("Execution provider not specified. Please use --cpu, --gpu, or --npu.")
             sys.exit(1)
 
         log.info("--- MLPerf Inference Benchmark - Offline ---")
         log.info("Configuration (using absolute paths for clarity):")
         log.info(f"  image_dir: {args.image_dir.resolve()}")
-        log.info(f"  map_file: {args.map_file.resolve()}")
         log.info(f"  onnx_model_path: {args.onnx_model_path.resolve()}")
         log.info(f"  num_images: {args.num_images}")
 
-        with open(args.map_file) as f:
-            entries = [line.strip().split() for line in f]
+        image_paths = sorted(list(args.image_dir.glob("*.JPEG")))
+        if not image_paths:
+             image_paths = sorted(list(args.image_dir.glob("*.[jJ][pP][gG]")) + list(args.image_dir.glob("*.[jJ][pP][eE][gG]")) + list(args.image_dir.glob("*.[pP][nN][gG]")))
 
-        if args.num_images and args.num_images < len(entries):
+        if not image_paths:
+            log.error(f"No images found in {args.image_dir}. Check the path and file extensions.")
+            sys.exit(1)
+        log.info(f"Found {len(image_paths)} images.")
+
+        if args.num_images and args.num_images < len(image_paths):
             log.info(f"Using a random subset of {args.num_images} images.")
             random.seed(42)
-            entries = random.sample(entries, args.num_images)
-
-        image_paths = [args.image_dir / e[0] for e in entries]
-        ground_truth = [int(e[1]) for e in entries]
+            image_paths = random.sample(image_paths, args.num_images)
 
         preprocessor = transforms.Compose([
             transforms.Resize(utils.IMAGE_RESIZE),
@@ -226,27 +177,22 @@ def main(args: argparse.Namespace) -> None:
             transforms.ToTensor(),
             transforms.Normalize(mean=utils.IMAGE_NET_MEAN, std=utils.IMAGE_NET_STD)
         ])
-        dataset = utils.ImagenetDataset(image_paths, ground_truth, preprocessor)
+        dataset = utils.ImagenetDataset(image_paths, preprocessor)
         sut_instance = SUT(args.onnx_model_path, dataset, provider=selected_provider)
 
+        # MLPerf LoadGen Configuration
         log_settings = LogSettings()
         log_settings.log_output.outdir = "."
         log_settings.log_output.copy_summary_to_stdout = True
 
-        if args.run_accuracy:
-            settings = TestSettings()
-            settings.scenario = TestScenario.Offline
-            settings.mode = TestMode.AccuracyOnly
-            run_test(sut_instance, dataset, settings)
-            sut_instance.get_accuracy()
-
-        if args.run_performance:
-            settings = TestSettings()
-            settings.scenario = TestScenario.Offline
-            settings.mode = TestMode.PerformanceOnly
-            settings.offline_expected_qps = 2000
-            run_test(sut_instance, dataset, settings)
-            sut_instance.get_performance_stats()
+        settings = TestSettings()
+        settings.scenario = TestScenario.Offline
+        settings.mode = TestMode.PerformanceOnly
+        settings.offline_expected_qps = 5000
+        settings.min_query_count = args.num_images if args.num_images else 100 
+        settings.min_duration_ms = 100
+        run_test(sut_instance, dataset, settings)
+        sut_instance.get_performance_stats()            
 
         log.info(f"Benchmark complete. Results are in: {args.results_dir.resolve()}")
 
@@ -259,12 +205,9 @@ def main(args: argparse.Namespace) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MLPerf Inference Benchmark for ResNet50 - Offline.")
     parser.add_argument("--image_dir", type=Path, required=True, help="Path to ImageNet validation images.")
-    parser.add_argument("--map_file", type=Path, required=True, help="Path to 'val_map.txt' file.")
     parser.add_argument("--onnx_model_path", type=Path, required=True, help="Path to the ONNX model file.")
     parser.add_argument("--results_dir", type=Path, default=Path("results_offline"), help="Directory to save logs and results.")
     parser.add_argument("--num_images", type=int, default=None, help="Number of images to use. Default is all.")
-    parser.add_argument("--run_accuracy", action="store_true", help="Run the accuracy test.")
-    parser.add_argument("--run_performance", action="store_true", help="Run the performance test.")
     
     provider_group = parser.add_mutually_exclusive_group(required=True)
     provider_group.add_argument("--cpu", action="store_true", help="Use CPUExecutionProvider.")
@@ -274,15 +217,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     args.image_dir = args.image_dir.resolve()
-    args.map_file = args.map_file.resolve()
     args.onnx_model_path = args.onnx_model_path.resolve()
     args.results_dir = args.results_dir.resolve()
-
-    if not (args.run_accuracy or args.run_performance):
-        sys.exit("ERROR: You must specify at least one test to run (--run_accuracy or --run_performance).")
     
-    # Validate inputs
-    for path_arg in [args.image_dir, args.map_file, args.onnx_model_path]:
+    # Input validation
+    for path_arg in [args.image_dir, args.onnx_model_path]:
         if not path_arg.exists():
             sys.exit(f"ERROR: File or directory not found: {path_arg.resolve()}")
     

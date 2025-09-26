@@ -37,11 +37,10 @@ def setup_logging(log_dir: Path) -> None:
 
 
 class ImagenetDataset:
-    def __init__(self, image_paths: List[Path], labels: List[int], preprocessor: transforms.Compose):
+    def __init__(self, image_paths: List[Path], preprocessor: transforms.Compose):
         self.image_paths = image_paths
-        self.labels = labels
         self.preprocessor = preprocessor
-        self.cache: Dict[int, Tuple[np.ndarray, int]] = {}
+        self.cache: Dict[int, np.ndarray] = {}
 
     def __len__(self) -> int:
         return len(self.image_paths)
@@ -55,7 +54,7 @@ class ImagenetDataset:
                 img = Image.open(self.image_paths[idx]).convert("RGB")
                 # unsqueeze(0) adds the batch dimension, creating a (1, C, H, W) tensor
                 tensor = self.preprocessor(img).unsqueeze(0).numpy()
-                self.cache[idx] = (tensor, self.labels[idx])
+                self.cache[idx] = tensor
             except Exception as e:
                 self.cache[idx] = (np.zeros((1, 3, IMAGE_CROP, IMAGE_CROP), dtype=np.float32), -1)
 

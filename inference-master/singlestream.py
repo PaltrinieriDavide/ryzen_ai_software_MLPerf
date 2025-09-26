@@ -6,7 +6,6 @@ which is designed to measure the latency of a single inference request.
 
 python inference-master/singlestream.py `
     --image_dir "dataset/ILSVRC2012_img_val" `
-    --map_file "dataset/val_map.txt" `
     --onnx_model_path "pipeline_scripts\quantized_models\resnet50_quant_int8.onnx" `
     --results_dir "inference-master/results/singleStream" `
     --num_images 100 `
@@ -63,7 +62,7 @@ class SUT:
             self.start_time = time.time()
 
         for query in query_samples:
-            tensor, _ = self.dataset.get_sample(query.index)
+            tensor = self.dataset.get_sample(query.index)
             inference_start = time.time()
             _ = self.session.run([self.output_name], {self.input_name: tensor})[0]
             self.latencies.append(time.time() - inference_start)
@@ -104,26 +103,6 @@ class SUT:
             }
         }
 
-def setup_logging(log_dir: Path) -> None:
-    """Configures a custom logger to write to a file and the console."""
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = (log_dir / "benchmark.log").resolve()
-    
-    logging.basicConfig(level=logging.INFO)
-    file_handler = logging.FileHandler(log_file, mode='w')
-    file_handler.setLevel(logging.DEBUG)
-    
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    
-    formatter = logging.Formatter("[%(asctime)s] [%(levelname)-5.5s] %(message)s")
-    file_handler.setFormatter(formatter)
-    console_handler.setFormatter(formatter)
-    
-    log.addHandler(file_handler)
-    log.addHandler(console_handler)
-    log.propagate = False
-
 def main(args: argparse.Namespace) -> None:
     """Main function to orchestrate the benchmark run."""
 
@@ -153,21 +132,24 @@ def main(args: argparse.Namespace) -> None:
         log.info("--- MLPerf Inference Benchmark - singlestream ---")
         log.info("Configuration:")
         log.info(f"  image_dir: {args.image_dir.resolve()}")
-        log.info(f"  map_file: {args.map_file.resolve()}")
         log.info(f"  onnx_model_path: {args.onnx_model_path.resolve()}")
         log.info(f"  num_images: {args.num_images}")
 
         log.info("Loading dataset...")
-        with open(args.map_file) as f:
-            entries = [line.strip().split() for line in f]
+        # Scansiona la directory delle immagini invece di leggere il map_file
+        image_paths = sorted(list(args.image_dir.glob("*.JPEG")))
+        if not image_paths:
+             image_paths = sorted(list(args.image_dir.glob("*.[jJ][pP][gG]")) + list(args.image_dir.glob("*.[jJ][pP][eE][gG]")) + list(args.image_dir.glob("*.[pP][nN][gG]")))
 
-        if args.num_images and args.num_images < len(entries):
+        if not image_paths:
+            log.error(f"No images found in {args.image_dir}. Check the path and file extensions.")
+            sys.exit(1)
+        log.info(f"Found {len(image_paths)} images.")
+
+        if args.num_images and args.num_images < len(image_paths):
             log.info(f"Using a random subset of {args.num_images} images.")
             random.seed(42)
-            entries = random.sample(entries, args.num_images)
-
-        image_paths = [args.image_dir / e[0] for e in entries]
-        ground_truth = [int(e[1]) for e in entries]
+            image_paths = random.sample(image_paths, args.num_images)
 
         preprocessor = transforms.Compose([
             transforms.Resize(utils.IMAGE_RESIZE),
@@ -175,7 +157,7 @@ def main(args: argparse.Namespace) -> None:
             transforms.ToTensor(),
             transforms.Normalize(mean=utils.IMAGE_NET_MEAN, std=utils.IMAGE_NET_STD)
         ])
-        dataset = utils.ImagenetDataset(image_paths, ground_truth, preprocessor)
+        dataset = utils.ImagenetDataset(image_paths, preprocessor)
         sut_instance = SUT(args.onnx_model_path, dataset, selected_provider)
         
         log_settings = LogSettings()
@@ -211,8 +193,8 @@ def main(args: argparse.Namespace) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MLPerf Inference Benchmark for ResNet50.")
+
     parser.add_argument("--image_dir", type=Path, required=True, help="Path to ImageNet validation images.")
-    parser.add_argument("--map_file", type=Path, required=True, help="Path to 'val_map.txt' file.")
     parser.add_argument("--onnx_model_path", type=Path, required=True, help="Path to the ONNX model file.")
     parser.add_argument("--results_dir", type=Path, default=Path("results"), help="Directory to save logs and results.")
     parser.add_argument("--num_images", type=int, default=None, help="Number of images to use. Default is all.")
@@ -225,14 +207,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     args.image_dir = args.image_dir.resolve()
-    args.map_file = args.map_file.resolve()
     args.onnx_model_path = args.onnx_model_path.resolve()
     args.results_dir = args.results_dir.resolve()
 
     if not args.image_dir.is_dir():
         sys.exit(f"ERROR: Image directory not found: {args.image_dir.resolve()}")
-    if not args.map_file.is_file():
-        sys.exit(f"ERROR: Map file not found: {args.map_file.resolve()}")
     if not args.onnx_model_path.is_file():
         sys.exit(f"ERROR: ONNX model not found: {args.onnx_model_path.resolve()}")
     

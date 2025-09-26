@@ -6,7 +6,6 @@ of an ONNX model, simulating a workload with multiple, simultaneous nference str
 
 python inference-master/multistream.py `
     --image_dir "dataset/ILSVRC2012_img_val" `
-    --map_file "dataset/val_map.txt" `
     --onnx_model_path "pipeline_scripts\quantized_models\resnet50_quant_int8.onnx" `
     --results_dir "inference-master/results/multiStream" `
     --num_images 10 `
@@ -72,7 +71,7 @@ class SUT:
                 query = self.work_queue.get(timeout=0.01)
 
                 # Retrieve the pre-processed tensor (already has batch dimension of 1)
-                tensor, _ = self.dataset.get_sample(query.index)
+                tensor = self.dataset.get_sample(query.index)
 
                 # Run inference on the single sample
                 _ = self.session.run([self.output_name], {self.input_name: tensor})
@@ -139,17 +138,21 @@ def main(args: argparse.Namespace) -> None:
             log.error("Execution provider not specified. Please use --cpu, --gpu, or --npu.")
             sys.exit(1)
 
-        log.info("Loading dataset map file...")
-        with open(args.map_file) as f:
-            entries = [line.strip().split() for line in f]
+        log.info(f"Searching for images in: {args.image_dir}")
+        image_paths = sorted(list(args.image_dir.glob("*.JPEG")))
+        if not image_paths:
+             image_paths = sorted(list(args.image_dir.glob("*.[jJ][pP][gG]")) + list(args.image_dir.glob("*.[jJ][pP][eE][gG]")) + list(args.image_dir.glob("*.[pP][nN][gG]")))
 
-        if args.num_images and args.num_images < len(entries):
-            log.info(f"Using a random subset of {args.num_images} images from {len(entries)} total.")
+        if not image_paths:
+            log.error(f"No images found in {args.image_dir}. Check the path and file extensions.")
+            sys.exit(1)
+        log.info(f"Found {len(image_paths)} images.")
+
+        # Applica il campionamento se richiesto
+        if args.num_images and args.num_images < len(image_paths):
+            log.info(f"Using a random subset of {args.num_images} images from {len(image_paths)} total.")
             random.seed(42)
-            entries = random.sample(entries, args.num_images)
-
-        image_paths = [args.image_dir / e[0] for e in entries]
-        ground_truth = [int(e[1]) for e in entries]
+            image_paths = random.sample(image_paths, args.num_images)
 
         preprocessor = transforms.Compose([
             transforms.Resize(utils.IMAGE_RESIZE),
@@ -157,7 +160,7 @@ def main(args: argparse.Namespace) -> None:
             transforms.ToTensor(),
             transforms.Normalize(mean=utils.IMAGE_NET_MEAN, std=utils.IMAGE_NET_STD)
         ])
-        dataset = utils.ImagenetDataset(image_paths, ground_truth, preprocessor)
+        dataset = utils.ImagenetDataset(image_paths, preprocessor)
         sut_instance = SUT(args.onnx_model_path, dataset, provider=selected_provider)
 
         log_settings = LogSettings()
@@ -168,8 +171,8 @@ def main(args: argparse.Namespace) -> None:
         settings = TestSettings()
         settings.scenario = TestScenario.MultiStream
         settings.mode = TestMode.PerformanceOnly
-        settings.min_duration_ms = 10000
-        settings.min_query_count = 2048
+        settings.min_duration_ms = 1000
+        settings.min_query_count = 300
 
         qsl = ConstructQSL(len(dataset), min(2048, len(dataset)), dataset.load_samples, dataset.unload_samples)
         sut = ConstructSUT(sut_instance.issue_queries, sut_instance.flush_queries)
@@ -193,10 +196,9 @@ def main(args: argparse.Namespace) -> None:
         os.chdir(original_wd)
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description="MLPerf Inference Benchmark for ResNet50 - MultiStream.")
+
     parser.add_argument("--image_dir", type=Path, required=True, help="Path to ImageNet validation images.")
-    parser.add_argument("--map_file", type=Path, required=True, help="Path to 'val_map.txt' file.")
     parser.add_argument("--onnx_model_path", type=Path, required=True, help="Path to the ONNX model file.")
     parser.add_argument("--results_dir", type=Path, default=Path("results_multistream"), help="Directory to save logs and results.")
     parser.add_argument("--num_images", type=int, default=None, help="Number of images to use from the dataset. Default is all.")
@@ -209,14 +211,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     args.image_dir = args.image_dir.resolve()
-    args.map_file = args.map_file.resolve()
     args.onnx_model_path = args.onnx_model_path.resolve()
     args.results_dir = args.results_dir.resolve()
 
     if not args.image_dir.is_dir():
         sys.exit(f"ERROR: Image directory not found: {args.image_dir.resolve()}")
-    if not args.map_file.is_file():
-        sys.exit(f"ERROR: Map file not found: {args.map_file.resolve()}")
     if not args.onnx_model_path.is_file():
         sys.exit(f"ERROR: ONNX model not found: {args.onnx_model_path.resolve()}")
 

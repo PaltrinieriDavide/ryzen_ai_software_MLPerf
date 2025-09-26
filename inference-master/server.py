@@ -10,7 +10,6 @@ to process inference requests asynchronously.
 
 python inference-master/server.py `
 >>     --image_dir "dataset/ILSVRC2012_img_val" `
->>     --map_file "dataset/val_map.txt" `
 >>     --onnx_model_path "pipeline_scripts\quantized_models\resnet50_quant_int8.onnx" `
 >>     --results_dir "inference-master/results/server" `
 >>     --num_images 10000 `
@@ -81,7 +80,7 @@ class SUT_Server:
                 continue
 
             #tensors = [self.dataset.get_sample(q.index) for q in work_items]
-            tensors = [self.dataset.get_sample(q.index)[0] for q in work_items]
+            tensors = [self.dataset.get_sample(q.index) for q in work_items]
             batch_tensor = np.concatenate(tensors, axis=0)
 
             self.session.run([self.output_name], {self.input_name: batch_tensor})
@@ -134,16 +133,23 @@ def main(args: argparse.Namespace):
             log.error("Execution provider not specified. Please use --cpu, --gpu, or --npu.")
             sys.exit(1)
 
-        with open(args.map_file) as f:
-            entries = [line.strip().split() for line in f]
+        log.info(f"Searching for images in: {args.image_dir}")
+        image_paths = sorted(list(args.image_dir.glob("*.JPEG")))
 
-        if args.num_images and args.num_images < len(entries):
+        if not image_paths:
+             # Prova con altre estensioni comuni se non trova nulla
+             image_paths = sorted(list(args.image_dir.glob("*.[jJ][pP][gG]")) + list(args.image_dir.glob("*.[jJ][pP][eE][gG]")) + list(args.image_dir.glob("*.[pP][nN][gG]")))
+
+        if not image_paths:
+            log.error(f"No images found in {args.image_dir}. Check the path and file extensions.")
+            sys.exit(1)
+
+        log.info(f"Found {len(image_paths)} images.")
+
+        if args.num_images and args.num_images < len(image_paths):
             random.seed(42)
-            entries = random.sample(entries, args.num_images)
-
-        image_paths = [args.image_dir / e[0] for e in entries]
-
-        ground_truth = [int(e[1]) for e in entries]
+            image_paths = random.sample(image_paths, args.num_images)
+            log.info(f"Using a random subset of {len(image_paths)} images.")
 
         preprocessor = transforms.Compose([
             transforms.Resize(utils.IMAGE_RESIZE),
@@ -151,12 +157,12 @@ def main(args: argparse.Namespace):
             transforms.ToTensor(),
             transforms.Normalize(mean=utils.IMAGE_NET_MEAN, std=utils.IMAGE_NET_STD)
         ])
-        dataset = utils.ImagenetDataset(image_paths, ground_truth, preprocessor)
+        dataset = utils.ImagenetDataset(image_paths, preprocessor)
 
-        # --- SUT Initialization ---
+        # SUT Initialization
         sut_instance = SUT_Server(args.onnx_model_path, dataset, provider=selected_provider)
 
-        # --- MLPerf LoadGen Configuration ---
+        # MLPerf LoadGen Configuration
         log_settings = LogSettings()
         log_settings.log_output.outdir = "."
         log_settings.log_output.copy_summary_to_stdout = True
@@ -166,7 +172,7 @@ def main(args: argparse.Namespace):
         settings.mode = TestMode.PerformanceOnly
         settings.server_target_qps = args.target_qps
         
-        settings.min_duration_ms = 10000
+        settings.min_duration_ms = 1000
         settings.min_query_count = 300
 
 
@@ -208,7 +214,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MLPerf Inference Benchmark for ResNet50 - Server Scenario.")
     
     parser.add_argument("--image_dir", type=Path, required=True, help="Path to the ImageNet validation images directory.")
-    parser.add_argument("--map_file", type=Path, required=True, help="Path to the ImageNet 'val_map.txt' file.")
     parser.add_argument("--onnx_model_path", type=Path, required=True, help="Path to the ONNX model file.")
     parser.add_argument("--results_dir", type=Path, default=Path("results/server"), help="Directory to save logs and results.")
     parser.add_argument("--num_images", type=int, default=1000, help="Number of images to use for the test. Default: 1000.")
@@ -222,14 +227,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     args.image_dir = args.image_dir.resolve()
-    args.map_file = args.map_file.resolve()
     args.onnx_model_path = args.onnx_model_path.resolve()
     args.results_dir = args.results_dir.resolve()
 
     if not args.image_dir.is_dir():
         sys.exit(f"ERROR: Image directory not found: {args.image_dir}")
-    if not args.map_file.is_file():
-        sys.exit(f"ERROR: Map file not found: {args.map_file}")
     if not args.onnx_model_path.is_file():
         sys.exit(f"ERROR: ONNX model not found: {args.onnx_model_path}")
     
