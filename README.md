@@ -11,12 +11,11 @@ ILSVRC2012 can be downloaded from the [ImageNet web page](https://www.image-net.
 
 Since the focus of this project is performance only, not accuracy, ground-truth labels are not required. The model predictions will be ignored during benchmarking, and the evaluation will only consider throughput and latency metrics.
 
-If you want to skip the quantization step (Step 2), we are providing the ready quantized model that we used in "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx"
-Otherwise, in order to proceed with the quantization, we need a calibration dataset, which can be created by directly selecting a small subset (300–500 images) from ILSVRC2012. You can freely create the calibration dataset in the folder dataset/imagent_calib_subset.
+In order to proceed with the quantization (Step 2), we need a calibration dataset, which can be created by directly selecting a small subset (300–500 images) from ILSVRC2012. You can freely create the calibration dataset in the folder dataset/imagent_calib_subset.
 
 ### **2. Model Quantization Pipeline**
-
-The first step is to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model. 
+If you want to skip this step, we are providing the ready quantized model that we used in "pipeline_scripts/quantized_models/resnet50_quant_int8.onnx".
+Otherwise, firstly we have to prepare an optimized model for the NPU. The `run_pipeline.py` script automates the entire process of converting a standard FP32 model into a quantized INT8 ONNX model. 
 
 The pipeline executes three main scripts in sequence:
 
